@@ -132,6 +132,43 @@ nav { height: 60px; align-items: center; }
 .links a[aria-current="page"]::after { transform: scaleX(1); }
 .nav-cta { grid-column: 10 / span 3; justify-self: end; display: flex; gap: 8px; }
 
+/* Mobile menu: toggle button + full-height panel under the header (shown below 860px) */
+.nav-toggle {
+  display: none; width: 36px; height: 36px; place-items: center; flex: none;
+  background: transparent; border: 1px solid var(--ink); color: var(--ink); cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.nav-toggle .i { width: 18px; height: 18px; grid-area: 1 / 1; transition: opacity .2s, transform .3s var(--ease); }
+.nav-toggle .i-close { opacity: 0; transform: rotate(-90deg); }
+.nav-toggle[aria-expanded="true"] { background: var(--ink); color: var(--paper); }
+.nav-toggle[aria-expanded="true"] .i-open { opacity: 0; transform: rotate(90deg); }
+.nav-toggle[aria-expanded="true"] .i-close { opacity: 1; transform: none; }
+.m-menu {
+  position: fixed; left: 0; right: 0; bottom: 0; top: var(--m-top, 61px); z-index: 75; /* above the cart button */
+  background: var(--paper); overflow-y: auto; overscroll-behavior: contain;
+  border-top: 1px solid var(--line);
+}
+.m-menu:not([hidden]) { animation: m-in .4s var(--ease); }
+@keyframes m-in { from { opacity: 0; transform: translateY(-12px); } }
+.m-menu .wrap { padding-top: 8px; padding-bottom: 32px; }
+.m-links { list-style: none; }
+.m-links a {
+  display: grid; grid-template-columns: 36px 1fr auto; align-items: baseline; gap: 8px;
+  padding: 16px 0; border-bottom: 1px solid var(--line);
+  font-family: var(--serif); font-size: 34px; line-height: 1.05; letter-spacing: -.01em;
+  transition: color .2s;
+}
+.m-links .label { color: var(--ink-2); }
+.m-links .i { width: 18px; height: 18px; align-self: center; color: var(--ink-2); transition: transform .3s var(--ease), color .2s; }
+.m-links a:hover, .m-links a[aria-current="page"] { color: var(--terra); }
+.m-links a:hover .i, .m-links a[aria-current="page"] .i { color: var(--terra); transform: translateX(4px); }
+.m-cta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 28px; }
+.m-cta .btn { justify-content: center; }
+.m-cta .btn.line { grid-column: 1 / -1; }
+.m-addr { margin-top: 24px; font-size: 14px; color: var(--ink-2); }
+.m-addr .label { display: block; margin-bottom: 6px; color: var(--ink); }
+html.menu-lock { overflow: hidden; }
+
 /* ==========================================================================
    07. Component: Hero (home)
    ========================================================================== */
@@ -481,6 +518,9 @@ footer {
 /* ==========================================================================
    99. Responsive (home + shared)
    ========================================================================== */
+@media (min-width: 861px) {
+  .m-menu { display: none; }
+}
 @media (max-width: 1080px) {
   .card.c-lg { grid-column: 1 / -1; grid-row: auto; }
   .card.c-lg .ph { aspect-ratio: 16 / 10; min-height: 0; }
@@ -492,6 +532,7 @@ footer {
 @media (max-width: 860px) {
   :root { --pad: 20px; --gutter: 16px; }
   .links, .nav-cta .line { display: none; }
+  .nav-toggle { display: grid; }
   .logo { grid-column: 1 / span 7; }
   .logo-svg { height: 34px; }
   .nav-cta { grid-column: 8 / span 5; }

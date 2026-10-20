@@ -57,6 +57,21 @@ document.getElementById('enquiry')?.addEventListener('submit', (e) => {
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 });
 
+// Mobile menu
+const navToggle = document.getElementById('nav-toggle');
+const mMenu = document.getElementById('m-menu');
+const setMenu = (open) => {
+  if (open) document.documentElement.style.setProperty('--m-top', document.querySelector('header').getBoundingClientRect().bottom + 'px');
+  mMenu.hidden = !open;
+  navToggle.setAttribute('aria-expanded', open);
+  navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  document.documentElement.classList.toggle('menu-lock', open);
+};
+navToggle.addEventListener('click', () => setMenu(mMenu.hidden));
+mMenu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
+addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mMenu.hidden) { setMenu(false); navToggle.focus(); } });
+matchMedia('(min-width: 861px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+
 // Links to the page you're on (logo on home, "back to top") scroll up instead of reloading
 const pageBase = location.pathname.replace(/[^/]*$/, ''); // "/", "/products/", "/about/"
 const smoothOrInstant = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
