@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K K Marketing — Disposable Plates, Bowls &amp; Cups</title>
+<meta name="description" content="K K Marketing, Margao, Goa — supplier and trader of disposable plates, paper plates, bowls and cups since 2015. Bulk supply for caterers, hotels, restaurants, events and shops.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ---------- Tokens ---------- */
+  :root {
+    --paper: #f4efe6;
+    --paper-2: #e9e0cf;
+    --ink: #171512;
+    --ink-2: #6a6257;
+    --line: rgba(23, 21, 18, .16);
+    --terra: #c2512e;
+    --terra-2: #a8411f;
+    --cobalt: var(--ink);
+    --cobalt-2: #24211d;
+    --butter: #f0d68a;
+
+    --pad: 40px;
+    --gutter: 24px;
+    --serif: "Instrument Serif", "Times New Roman", serif;
+    --sans: "Inter Tight", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, monospace;
+    --ease: cubic-bezier(.2, .7, 0, 1);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; border-radius: 0 !important; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  ::selection { background: var(--terra); color: var(--paper); }
+
+  /* ---------- Grid & type ---------- */
+  .wrap { padding-left: var(--pad); padding-right: var(--pad); max-width: 1520px; margin: 0 auto; }
+  .grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: var(--gutter); }
+  .label {
+    font-family: var(--mono); font-size: 11px; font-weight: 500;
+    letter-spacing: .08em; text-transform: uppercase;
+  }
+  .muted { color: var(--ink-2); }
+  .serif { font-family: var(--serif); font-weight: 400; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -.015em; }
+  h1 { font-size: clamp(46px, 6.4vw, 100px); line-height: .96; }
+  h2 { font-size: clamp(34px, 4.2vw, 64px); line-height: 1; }
+  h3 { font-size: clamp(22px, 1.9vw, 28px); line-height: 1.1; }
+  em { font-style: italic; }
+  .lead { font-size: clamp(16px, 1.25vw, 18px); line-height: 1.55; max-width: 44ch; }
+
+  /* ---------- Icons (Lucide) ---------- */
+  .i { width: 15px; height: 15px; flex: none; display: inline-block; vertical-align: -2px; }
+  .go .i { width: 20px; height: 20px; }
+  .label .i { width: 12px; height: 12px; vertical-align: -1px; }
+
+  /* ---------- Buttons: sharp, short ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 12px;
+    height: 36px; padding: 0 16px;
+    font-family: var(--sans); font-size: 13.5px; font-weight: 500;
+    border: 1px solid var(--ink); background: var(--ink); color: var(--paper);
+    cursor: pointer; white-space: nowrap;
+    transition: background .2s, color .2s, border-color .2s;
+  }
+  .btn:hover { background: var(--terra); border-color: var(--terra); }
+  .btn .arr { transition: transform .25s var(--ease); }
+  .btn:hover .arr { transform: translateX(3px); }
+  .btn.line { background: transparent; color: var(--ink); }
+  .btn.line:hover { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .btn.terra { background: var(--terra); border-color: var(--terra); }
+  .btn.terra:hover { background: var(--ink); border-color: var(--ink); }
+  .btn.paper { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+  .btn.paper:hover { background: transparent; color: var(--paper); }
+
+  /* ---------- Announcement + nav ---------- */
+  .bar { background: var(--ink); color: var(--paper); }
+  .bar .wrap { display: flex; justify-content: space-between; align-items: center; height: 34px; gap: 16px; }
+  .bar .label { font-size: 10.5px; }
+  .bar .dot { display: inline-block; width: 6px; height: 6px; background: var(--terra); margin-right: 10px; transform: translateY(-1px); }
+
+  header {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(244, 239, 230, .9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  nav { height: 60px; align-items: center; }
+  .logo { grid-column: 1 / span 3; display: flex; align-items: center; color: var(--ink); }
+  .logo-svg { height: 40px; width: auto; display: block; }
+  .logo .accent, .foot-logo .accent { fill: var(--terra); }
+  .links { grid-column: 4 / span 6; display: flex; justify-content: center; gap: 32px; font-size: 14px; }
+  .links { font-size: 15px; font-weight: 500; }
+  .links a { position: relative; color: var(--ink); padding: 4px 0; transition: color .3s var(--ease); }
+  /* Underline draws in from the left; on leave it exits to the right */
+  .links a::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1.5px;
+    background: var(--terra);
+    transform: scaleX(0); transform-origin: right;
+    transition: transform .45s var(--ease);
+  }
+  .links a:hover, .links a:focus-visible { color: var(--terra); }
+  .links a:hover::after, .links a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+  .nav-cta { grid-column: 10 / span 3; justify-self: end; display: flex; gap: 8px; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding-top: 56px; padding-bottom: 72px; }
+  .hero-text { grid-column: 1 / span 6; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
+  .hero-text h1 em { color: var(--terra); }
+  .hero-text .lead { margin-top: 28px; }
+  .hero-actions { display: flex; gap: 8px; margin-top: 32px; flex-wrap: wrap; }
+  .hero-facts { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+  .hero-facts div { padding: 16px 16px 0 0; }
+  .hero-facts b { display: block; font-family: var(--serif); font-weight: 400; font-size: 32px; line-height: 1; margin-bottom: 6px; }
+  .hero-facts span { font-size: 13px; color: var(--ink-2); }
+
+  .hero-visual { grid-column: 7 / span 6; position: relative; min-height: 600px; }
+  .hero-visual .main { position: absolute; inset: 0 0 64px 64px; overflow: hidden; }
+  .hero-visual .main img { transform: scale(1.06); animation: settle 1.6s var(--ease) forwards; }
+  @keyframes settle { to { transform: none; } }
+  .hero-visual .chip {
+    position: absolute; left: 0; bottom: 0; width: 46%;
+    background: var(--terra); color: var(--paper);
+    padding: 22px 22px 24px;
+  }
+  .hero-visual .chip p { font-family: var(--serif); font-size: 26px; line-height: 1.1; margin-top: 20px; }
+  .hero-visual .main.cut { background: var(--butter); }
+  .hero-visual .main.cut img { object-fit: contain; padding: 10% 8%; }
+  /* Hero showcase: complete product range */
+  .hero-showcase { background: #ebdcc3; position: relative; overflow: hidden; }
+  .hero-showcase .hero-range-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    display: block;
+    transform: scale(1.02);
+    animation: settle 1.6s var(--ease) forwards;
+    transition: transform 1.2s var(--ease);
+  }
+  .hero-visual:hover .hero-range-img { transform: scale(1.05); }
+  .hero-visual .tag {
+    position: absolute; top: 16px; right: 16px;
+    background: var(--paper); padding: 6px 12px;
+    z-index: 3;
+    letter-spacing: .08em;
+  }
+
+  /* ---------- Marquee ---------- */
+  .marquee { background: var(--ink); color: var(--paper); overflow: hidden; white-space: nowrap; }
+  .marquee-track { display: inline-flex; animation: slide 45s linear infinite; }
+  .marquee-track span { font-family: var(--serif); font-size: 26px; padding: 14px 0; display: inline-flex; align-items: center; }
+  .marquee-track span:nth-child(even) { font-style: italic; color: var(--butter); }
+  .marquee-track span::after { content: ""; width: 8px; height: 8px; border: 1px solid currentColor; border-radius: 50% !important; margin: 0 32px; }
+  @keyframes slide { to { transform: translateX(-50%); } }
+
+  /* ---------- Sections ---------- */
+  section { padding: 112px 0; }
+  .sec-head { align-items: end; margin-bottom: 56px; }
+  .sec-head .label { grid-column: 1 / span 3; padding-bottom: 10px; }
+  .sec-head h2 { grid-column: 4 / span 6; }
+  .sec-head .side { grid-column: 10 / span 3; font-size: 14.5px; color: var(--ink-2); padding-bottom: 6px; }
+
+  /* Collections */
+  .collections { row-gap: 48px; }
+  .card { display: flex; flex-direction: column; }
+  .card.c-lg { grid-column: 1 / span 6; grid-row: span 2; }
+  .card.c-sm { grid-column: span 3; }
+  .card .ph { overflow: hidden; position: relative; background: var(--paper-2); aspect-ratio: 4 / 5; }
+  .card.c-lg .ph { aspect-ratio: auto; flex: 1; min-height: 420px; }
+  .card .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform 1s var(--ease); }
+  .card.c-lg .ph img { object-position: center 65%; }
+  .card:hover .ph img { transform: scale(1.05); }
+  .card .ph.cut { background: var(--terra); }
+  .card .ph.cut img { object-fit: contain; padding: 14%; }
+  .card .ph.cut.butter { background: var(--butter); }
+  .card .ph.cut.butter img { padding: 10%; }
+  .card.cta { background: var(--ink); color: var(--paper); padding: 20px; justify-content: space-between; min-height: 100%; }
+  .card.cta h3 { font-size: clamp(26px, 2.4vw, 36px); margin-top: 24px; }
+  .card.cta h3 em { color: var(--butter); }
+  .card.cta p { font-size: 14px; color: rgba(244, 239, 230, .7); margin-top: 12px; }
+  .card.cta .btn { align-self: flex-start; margin-top: 24px; }
+  .card .ph .no { position: absolute; top: 12px; left: 12px; background: var(--paper); padding: 4px 8px; }
+  .card .meta { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding-top: 14px; border-top: 1px solid var(--ink); margin-top: 14px; }
+  .card .meta p { font-size: 13.5px; color: var(--ink-2); margin-top: 4px; }
+  .card .go { display: inline-flex; transition: transform .3s var(--ease), color .2s; }
+  .card:hover .go { transform: translateX(4px); color: var(--terra); }
+
+  /* Story (terracotta) */
+  .story { background: var(--terra); color: var(--paper); }
+  .story .muted { color: rgba(244, 239, 230, .72); }
+  .story-img { grid-column: 1 / span 5; aspect-ratio: 4 / 5; overflow: hidden; }
+  .story-body { grid-column: 7 / span 6; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
+  .story-body h2 { font-size: clamp(32px, 3.6vw, 56px); line-height: 1.04; margin-top: 24px; }
+  .story-body h2 em { color: var(--butter); }
+  .story-cols { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); font-size: 15px; }
+  .stats { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid rgba(244, 239, 230, .35); }
+  .stats div { padding-top: 16px; }
+  .stats b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 4vw, 60px); line-height: 1; margin-bottom: 8px; }
+
+  /* Clients (ink black) */
+  .clients { background: var(--ink); color: var(--paper); }
+  .clients .muted { color: rgba(244, 239, 230, .62); }
+  .clients .sec-head .side { color: rgba(244, 239, 230, .62); }
+  .client-list { border-top: 1px solid rgba(244, 239, 230, .2); }
+  .client {
+    grid-column: span 3;
+    padding: 22px 0 26px;
+    border-bottom: 1px solid rgba(244, 239, 230, .2);
+    transition: color .2s;
+  }
+  .client h3 { margin: 0 0 8px; }
+  .client p { font-size: 14px; }
+  .client:hover h3 { color: var(--butter); }
+
+  /* Process */
+  .steps { border-top: 1px solid var(--ink); }
+  .step { grid-column: span 3; padding: 20px var(--gutter) 0 0; position: relative; }
+  .step .n { font-family: var(--serif); font-size: 56px; line-height: 1; color: var(--terra); }
+  .step h3 { margin: 28px 0 10px; }
+  .step p { font-size: 14.5px; color: var(--ink-2); max-width: 30ch; }
+
+  /* Contact */
+  .contact { background: var(--paper-2); }
+  .contact-head { grid-column: 1 / span 5; }
+  .contact-head h2 em { color: var(--terra); }
+  .contact-head .lead { margin-top: 20px; color: var(--ink-2); }
+  .details { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--ink); }
+  .details div { padding: 16px 16px 20px 0; border-bottom: 1px solid var(--line); font-size: 15px; }
+  .details .label { display: block; margin-bottom: 8px; color: var(--ink-2); }
+  .details a:hover { color: var(--terra); }
+
+  form { grid-column: 7 / span 6; background: var(--paper); padding: 32px; align-self: start; }
+  form h3 { margin-bottom: 24px; }
+  .field { display: block; margin-bottom: 18px; }
+  .field .label { display: block; margin-bottom: 6px; color: var(--ink-2); }
+  .field input, .field select, .field textarea {
+    width: 100%; font: inherit; font-size: 15px; color: var(--ink);
+    background: transparent; border: 0; border-bottom: 1px solid var(--ink);
+    padding: 8px 0; outline: none; transition: border-color .2s;
+  }
+  .field textarea { resize: vertical; min-height: 72px; }
+  .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--terra); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: var(--gutter); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips label { cursor: pointer; }
+  .chips input { position: absolute; opacity: 0; pointer-events: none; }
+  .chips span { display: inline-flex; align-items: center; height: 30px; padding: 0 12px; border: 1px solid var(--line); font-size: 13px; transition: all .2s; }
+  .chips input:checked + span { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+  .chips input:focus-visible + span { outline: 2px solid var(--terra); outline-offset: 2px; }
+  .form-foot { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-top: 28px; flex-wrap: wrap; }
+  .form-foot small { font-size: 12.5px; color: var(--ink-2); }
+
+  /* Footer */
+  footer { background: var(--ink); color: var(--paper); padding: 72px 0 28px; }
+  .foot-logo { color: var(--paper); }
+  .foot-logo svg { width: min(100%, 980px); height: auto; display: block; }
+  .foot-row { margin-top: 48px; padding-top: 20px; border-top: 1px solid rgba(244, 239, 230, .2); color: rgba(244, 239, 230, .62); }
+  .foot-row > * { grid-column: span 3; }
+  .foot-row > *:last-child { text-align: right; }
+  .foot-row a:hover { color: var(--paper); }
+  .credits { margin-top: 20px; font-size: 11.5px; line-height: 1.6; color: rgba(244, 239, 230, .45); max-width: 90ch; }
+  .credits a { text-decoration: underline; text-underline-offset: 2px; }
+
+  /* Reveal */
+  .rv { opacity: 0; transform: translateY(20px); transition: opacity .9s var(--ease), transform .9s var(--ease); }
+  .rv.in { opacity: 1; transform: none; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 1080px) {
+    .card.c-lg { grid-column: 1 / -1; grid-row: auto; }
+    .card.c-lg .ph { aspect-ratio: 16 / 10; min-height: 0; }
+    .card.c-sm { grid-column: span 6; }
+    .client { grid-column: span 6; }
+    .step { grid-column: span 6; padding-bottom: 32px; }
+  }
+  @media (max-width: 860px) {
+    :root { --pad: 20px; --gutter: 16px; }
+    .links, .nav-cta .line { display: none; }
+    .logo { grid-column: 1 / span 7; }
+    .logo-svg { height: 34px; }
+    .nav-cta { grid-column: 8 / span 5; }
+    .bar .hide-sm { display: none; }
+    .hero { padding-top: 36px; }
+    .hero-text, .hero-visual { grid-column: 1 / -1; }
+    .hero-visual { min-height: 0; aspect-ratio: 4 / 5; margin-top: 40px; }
+    .hero-visual .main { inset: 0 0 48px 32px; }
+    .hero-visual .chip { width: 62%; padding: 16px; }
+    .hero-visual .chip p { font-size: 20px; margin-top: 12px; }
+    section { padding: 80px 0; }
+    .sec-head .label, .sec-head h2, .sec-head .side { grid-column: 1 / -1; }
+    .sec-head h2 { margin: 14px 0 16px; }
+    .story-img, .story-body, .contact-head, form { grid-column: 1 / -1; }
+    .story-img { aspect-ratio: 4 / 3; margin-bottom: 40px; }
+    form { margin-top: 48px; padding: 24px 20px; }
+    .foot-row > * { grid-column: span 6; margin-bottom: 8px; }
+    .foot-row > *:last-child { text-align: left; }
+  }
+  @media (max-width: 560px) {
+    .card.c-sm, .client, .step { grid-column: 1 / -1; }
+    .story-cols, .details, .field-row { grid-template-columns: 1fr; }
+    .stats b { font-size: 36px; }
+    .hero-facts b { font-size: 26px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    .rv { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Icons: Lucide v0.460.0 (ISC) — arrow-right, arrow-up-right, arrow-up -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+  <symbol id="i-arrow-up-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol>
+</svg>
+
+<div class="bar">
+  <div class="wrap">
+    <span class="label"><span class="dot"></span>Disposable plates, bowls &amp; cups — Margao, Goa</span>
+    <span class="label hide-sm">Supplying since 2015 · Bulk orders welcome</span>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap grid">
+    <a href="#top" class="logo" aria-label="K K Marketing — home"><svg class="logo-svg" role="img" aria-label="K K Marketing" viewBox="0 0 270.22 64"><circle class="accent" cx="32" cy="32" r="32" fill="#c2512e"/><circle cx="32" cy="32" r="25.6" fill="none" stroke="#f4efe6" stroke-width="1.44" opacity=".6"/><path fill="#f4efe6" transform="translate(14.5 41.31)" d="M1.225 0.0V-18.625H5.050000000000001V-10.3375H5.2875000000000005L12.1125 -18.625H16.7L9.7375 -10.275L16.7875 0.0H12.200000000000001L7.0125 -7.7125L5.050000000000001 -5.3375V0.0ZM18.218500000000002 0.0V-18.625H22.0435V-10.3375H22.281000000000002L29.106 -18.625H33.6935L26.731 -10.275L33.781000000000006 0.0H29.1935L24.006 -7.7125L22.0435 -5.3375V0.0Z"/><path class="accent" fill="#c2512e" d="M79.435546875 43.0V21.173828125H83.91796875V30.8857421875H84.1962890625L92.1943359375 21.173828125H97.5703125L89.4111328125 30.958984375L97.6728515625 43.0H92.296875L86.2177734375 33.9619140625L83.91796875 36.7451171875V43.0ZM99.3498046875 43.0V21.173828125H103.8322265625V30.8857421875H104.110546875L112.10859375 21.173828125H117.4845703125L109.325390625 30.958984375L117.587109375 43.0H112.2111328125L106.13203125 33.9619140625L103.8322265625 36.7451171875V43.0Z"/><path fill="currentColor" d="M126.7640625 21.173828125H132.301171875L138.394921875 36.056640625H138.6439453125L144.75234375 21.173828125H150.31875V43.0H145.92421875V28.6298828125H145.7484375L140.00625 42.8974609375H136.988671875L131.305078125 28.6005859375H131.1146484375V43.0H126.7640625ZM158.0748046875 43.322265625Q156.5220703125 43.322265625 155.28427734375 42.765625Q154.046484375 42.208984375 153.33603515625 41.125Q152.6255859375 40.041015625 152.6255859375 38.4296875Q152.6255859375 37.052734375 153.1236328125 36.13720703125Q153.6216796875 35.2216796875 154.49326171875 34.65771484375Q155.36484375 34.09375 156.47080078125 33.80078125Q157.5767578125 33.5078125 158.792578125 33.390625Q160.2134765625 33.244140625 161.08505859375 33.11962890625Q161.956640625 32.9951171875 162.35947265625 32.72412109375Q162.7623046875 32.453125 162.7623046875 31.92578125V31.8525390625Q162.7623046875 30.8125 162.1177734375 30.23388671875Q161.4732421875 29.6552734375 160.2720703125 29.6552734375Q159.0123046875 29.6552734375 158.265234375 30.2119140625Q157.5181640625 30.7685546875 157.269140625 31.57421875L153.196875 31.2080078125Q153.5337890625 29.7138671875 154.47861328125 28.63720703125Q155.4234375 27.560546875 156.89560546875 26.9892578125Q158.3677734375 26.41796875 160.28671875 26.41796875Q161.605078125 26.41796875 162.835546875 26.7255859375Q164.066015625 27.033203125 165.0474609375 27.69970703125Q166.02890625 28.3662109375 166.6001953125 29.42822265625Q167.171484375 30.490234375 167.171484375 31.9697265625V43.0H162.98203125V40.7294921875H162.86484375Q162.4693359375 41.4765625 161.81748046875 42.05517578125Q161.165625 42.6337890625 160.23544921875 42.97802734375Q159.3052734375 43.322265625 158.0748046875 43.322265625ZM159.3052734375 40.24609375Q160.3453125 40.24609375 161.12900390625 39.82861328125Q161.9126953125 39.4111328125 162.3521484375 38.7080078125Q162.7916015625 38.0048828125 162.7916015625 37.140625V35.3681640625Q162.5865234375 35.5146484375 162.2056640625 35.62451171875Q161.8248046875 35.734375 161.34873046875 35.82958984375Q160.87265625 35.9248046875 160.41123046875 35.99072265625Q159.9498046875 36.056640625 159.5689453125 36.115234375Q158.76328125 36.232421875 158.14072265625 36.49609375Q157.5181640625 36.759765625 157.18125 37.19189453125Q156.8443359375 37.6240234375 156.8443359375 38.2978515625Q156.8443359375 39.25 157.5328125 39.748046875Q158.2212890625 40.24609375 159.3052734375 40.24609375ZM170.16679687500002 43.0V26.623046875H174.42949218750002V29.4794921875H174.60527343750002Q175.04472656250002 27.9560546875 176.10673828125002 27.1796875Q177.16875000000002 26.4033203125 178.54570312500002 26.4033203125Q178.88261718750002 26.4033203125 179.27812500000002 26.43994140625Q179.67363281250002 26.4765625 179.96660156250002 26.5498046875V30.4755859375Q179.65898437500002 30.373046875 179.10234375000002 30.30712890625Q178.54570312500002 30.2412109375 178.06230468750002 30.2412109375Q177.06621093750002 30.2412109375 176.26787109375002 30.6806640625Q175.46953125000002 31.1201171875 175.01542968750002 31.88916015625Q174.56132812500002 32.658203125 174.56132812500002 33.6689453125V43.0ZM185.62792968750003 38.2099609375 185.64257812500003 32.921875H186.30175781250003L191.64843750000003 26.623046875H196.73144531250003L189.65625000000003 34.826171875H188.61621093750003ZM181.64355468750003 43.0V21.173828125H186.03808593750003V43.0ZM191.86816406250003 43.0 186.96093750000003 35.822265625 189.89062500000003 32.7021484375 197.03906250000003 43.0ZM205.71796875000004 43.322265625Q203.21308593750004 43.322265625 201.39667968750004 42.296875Q199.58027343750004 41.271484375 198.60615234375004 39.37451171875Q197.63203125000004 37.4775390625 197.63203125000004 34.8994140625Q197.63203125000004 32.365234375 198.59882812500004 30.4609375Q199.56562500000004 28.556640625 201.33808593750004 27.4873046875Q203.11054687500004 26.41796875 205.49824218750004 26.41796875Q207.09492187500004 26.41796875 208.49384765625004 26.9306640625Q209.89277343750004 27.443359375 210.94746093750004 28.46875Q212.00214843750004 29.494140625 212.58808593750004 31.05419921875Q213.17402343750004 32.6142578125 213.17402343750004 34.7236328125V35.9541015625H199.43378906250004V33.2001953125H211.03535156250004L208.98457031250004 33.9326171875Q208.98457031250004 32.658203125 208.59638671875004 31.71337890625Q208.20820312500004 30.7685546875 207.43916015625004 30.24853515625Q206.67011718750004 29.728515625 205.52753906250004 29.728515625Q204.38496093750004 29.728515625 203.59394531250004 30.255859375Q202.80292968750004 30.783203125 202.38544921875004 31.68408203125Q201.96796875000004 32.5849609375 201.96796875000004 33.7421875V35.6904296875Q201.96796875000004 37.0380859375 202.44404296875004 38.01220703125Q202.92011718750004 38.986328125 203.78437500000004 39.4990234375Q204.64863281250004 40.01171875 205.79121093750004 40.01171875Q206.55292968750004 40.01171875 207.18281250000004 39.7919921875Q207.81269531250004 39.572265625 208.26679687500004 39.14013671875Q208.72089843750004 38.7080078125 208.95527343750004 38.078125L213.02753906250004 38.3857421875Q212.70527343750004 39.8798828125 211.73847656250004 40.98583984375Q210.77167968750004 42.091796875 209.24824218750004 42.70703125Q207.72480468750004 43.322265625 205.71796875000004 43.322265625ZM224.02089843750005 26.623046875V29.962890625H214.26503906250005V26.623046875ZM216.50625000000005 22.7265625H220.90078125000005V37.990234375Q220.90078125000005 38.8251953125 221.28164062500005 39.2353515625Q221.66250000000005 39.6455078125 222.48281250000005 39.6455078125Q222.74648437500005 39.6455078125 223.06875000000005 39.59423828125Q223.39101562500005 39.54296875 223.62539062500005 39.484375L224.32851562500005 42.8095703125Q223.61074218750005 43.029296875 222.92958984375005 43.1318359375Q222.24843750000005 43.234375 221.57460937500005 43.234375Q219.15761718750005 43.234375 217.83193359375005 42.01123046875Q216.50625000000005 40.7880859375 216.50625000000005 38.5908203125ZM226.32773437500006 43.0V26.623046875H230.72226562500006V43.0ZM228.52500000000006 24.484375Q227.52890625000006 24.484375 226.81845703125006 23.8251953125Q226.10800781250006 23.166015625 226.10800781250006 22.228515625Q226.10800781250006 21.291015625 226.81845703125006 20.6318359375Q227.52890625000006 19.97265625 228.52500000000006 19.97265625Q229.52109375000006 19.97265625 230.22421875000006 20.6318359375Q230.92734375000006 21.291015625 230.92734375000006 22.228515625Q230.92734375000006 23.166015625 230.22421875000006 23.8251953125Q229.52109375000006 24.484375 228.52500000000006 24.484375ZM238.11210937500007 33.5224609375V43.0H233.71757812500007V26.623046875H238.03886718750007V29.5087890625H238.21464843750007Q238.77128906250007 28.087890625 239.97978515625007 27.2529296875Q241.18828125000007 26.41796875 243.01933593750007 26.41796875Q244.71855468750007 26.41796875 245.98564453125007 27.15771484375Q247.25273437500007 27.8974609375 247.95585937500007 29.28173828125Q248.65898437500007 30.666015625 248.65898437500007 32.5849609375V43.0H244.26445312500007V33.3466796875Q244.26445312500007 31.8232421875 243.47343750000007 30.95166015625Q242.68242187500007 30.080078125 241.29082031250007 30.080078125Q240.35332031250007 30.080078125 239.63554687500007 30.490234375Q238.91777343750007 30.900390625 238.51494140625007 31.662109375Q238.11210937500007 32.423828125 238.11210937500007 33.5224609375ZM258.9345703125001 49.474609375Q255.66796875000009 49.474609375 253.80761718750009 48.185546875Q251.94726562500009 46.896484375 251.52246093750009 44.9921875L255.56542968750009 44.376953125Q255.75585937500009 44.875 256.1806640625001 45.30712890625Q256.6054687500001 45.7392578125 257.3085937500001 46.01025390625Q258.0117187500001 46.28125 259.0371093750001 46.28125Q260.5458984375001 46.28125 261.5346679687501 45.548828125Q262.5234375000001 44.81640625 262.5234375000001 43.1171875V40.099609375H262.3183593750001Q262.0253906250001 40.744140625 261.4321289062501 41.359375Q260.8388671875001 41.974609375 259.9086914062501 42.3701171875Q258.9785156250001 42.765625 257.6455078125001 42.765625Q255.79980468750009 42.765625 254.29101562500009 41.9013671875Q252.78222656250009 41.037109375 251.88134765625009 39.2646484375Q250.98046875000009 37.4921875 250.98046875000009 34.7822265625Q250.98046875000009 32.013671875 251.88867187500009 30.1533203125Q252.79687500000009 28.29296875 254.31298828125009 27.35546875Q255.82910156250009 26.41796875 257.6601562500001 26.41796875Q259.0371093750001 26.41796875 259.9672851562501 26.88671875Q260.8974609375001 27.35546875 261.4760742187501 28.03662109375Q262.0546875000001 28.7177734375 262.3623046875001 29.376953125H262.5380859375001V26.623046875H266.8593750000001V43.1904296875Q266.8593750000001 45.2705078125 265.8413085937501 46.66943359375Q264.8232421875001 48.068359375 263.0361328125001 48.771484375Q261.2490234375001 49.474609375 258.9345703125001 49.474609375ZM259.0078125000001 39.42578125Q260.6923828125001 39.42578125 261.6152343750001 38.18798828125Q262.5380859375001 36.9501953125 262.5380859375001 34.767578125Q262.5380859375001 33.302734375 262.1279296875001 32.21875Q261.7177734375001 31.134765625 260.9340820312501 30.5341796875Q260.1503906250001 29.93359375 259.0078125000001 29.93359375Q257.8652343750001 29.93359375 257.0742187500001 30.55615234375Q256.2832031250001 31.1787109375 255.8803710937501 32.2626953125Q255.47753906250009 33.3466796875 255.47753906250009 34.767578125Q255.47753906250009 36.1884765625 255.8876953125001 37.23583984375Q256.2978515625001 38.283203125 257.0815429687501 38.8544921875Q257.8652343750001 39.42578125 259.0078125000001 39.42578125Z"/></svg></a>
+    <div class="links">
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#clients">Who we supply</a>
+      <a href="#process">How to order</a>
+    </div>
+    <div class="nav-cta">
+      <a href="tel:+910000000000" class="btn line">Call</a>
+      <a href="#contact" class="btn">Get a rate <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <!-- Hero -->
+  <div class="hero wrap grid">
+    <div class="hero-text">
+      <div>
+        <p class="label muted rv">Paper plates · Bowls · Cups · Leaf plates</p>
+        <h1 class="rv" style="margin-top:20px">Disposables for <em>every</em> plate you serve.</h1>
+        <p class="lead muted rv">Paper plates, bowls and cups supplied in bulk from Margao — for caterers, hotels, restaurants, events and shops across Goa.</p>
+        <div class="hero-actions rv">
+          <a href="#products" class="btn">See products <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a href="https://wa.me/910000000000" class="btn line">WhatsApp us</a>
+        </div>
+      </div>
+      <div class="hero-facts rv">
+        <div><b>2015</b><span>Registered</span></div>
+        <div><b>Margao</b><span>Goa, India</span></div>
+        <div><b>Bulk</b><span>&amp; retail supply</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="main hero-showcase" role="img" aria-label="Comprehensive range of disposable catering products by K K Marketing including paper plates, areca leaf plates, paper bowls, cups and cutlery">
+        <img class="hero-range-img" src="assets/hero-range.jpg" alt="K K Marketing complete range: paper plates, natural areca leaf plates, paper food bowls, tea cups and wooden cutlery" fetchpriority="high">
+      </div>
+      <span class="tag label">The range</span>
+      <div class="chip rv">
+        <span class="label">Bulk pricing</span>
+        <p>Order by the carton for weddings, events and daily service.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Paper plates</span><span>Buffet plates</span><span>Paper bowls</span><span>Paper cups</span><span>Tea cups</span><span>Areca leaf plates</span><span>Leaf bowls</span><span>Party supplies</span>
+      <span>Paper plates</span><span>Buffet plates</span><span>Paper bowls</span><span>Paper cups</span><span>Tea cups</span><span>Areca leaf plates</span><span>Leaf bowls</span><span>Party supplies</span>
+    </div>
+  </div>
+
+  <!-- Products -->
+  <section id="products" class="wrap">
+    <div class="sec-head grid rv">
+      <p class="label">(01) Products</p>
+      <h2>Use once. <em>Serve well.</em></h2>
+      <p class="side">Stocked in common sizes and packed in bulk. Ask for samples before a large order.</p>
+    </div>
+    <div class="grid collections">
+      <a href="#contact" class="card c-lg rv">
+        <figure class="ph"><img src="assets/paper-plate.jpg" alt="Stacks of printed floral buffet paper plates, fluted plates, and silver snack plates" loading="lazy"><span class="no label">01</span></figure>
+        <div class="meta"><div><h3>Paper plates</h3><p>Round plates for meals, snacks and buffets, in a range of sizes.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+      </a>
+      <a href="#contact" class="card c-sm rv">
+        <figure class="ph"><img src="assets/paper-cups.jpg" alt="Assortment of disposable paper cups for Indian chai, coffee, and beverages" loading="lazy"><span class="no label">02</span></figure>
+        <div class="meta"><div><h3>Paper cups</h3><p>For tea, coffee, water and juice.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+      </a>
+      <a href="#contact" class="card c-sm rv">
+        <figure class="ph"><img src="assets/paper-bowl.jpg" alt="Kraft paper curry and takeaway food bowls with lids and silver dona bowls" loading="lazy"><span class="no label">03</span></figure>
+        <div class="meta"><div><h3>Bowls</h3><p>For curries, desserts and takeaway.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+      </a>
+      <a href="#contact" class="card c-sm rv">
+        <figure class="ph"><img src="assets/areca-plates.jpg" alt="Natural areca palm leaf plates and bowls showing organic woodgrain texture" loading="lazy"><span class="no label">04</span></figure>
+        <div class="meta"><div><h3>Areca leaf plates</h3><p>Natural, sturdy, plastic-free.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
+      </a>
+      <div class="card c-sm cta rv">
+        <span class="label" style="color:var(--butter)">05 — Something else?</span>
+        <div>
+          <h3>Need a size or item <em>not listed?</em></h3>
+          <p>Send us your list and quantities. We’ll tell you what we can supply.</p>
+        </div>
+        <a href="#contact" class="btn paper">Send your list <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section id="about" class="story">
+    <div class="wrap grid">
+      <figure class="story-img rv"><img src="assets/leaf-plates.jpg" alt="K K Marketing wholesale supply showroom in Margao, Goa" loading="lazy"></figure>
+      <div class="story-body">
+        <div class="rv">
+          <p class="label">(02) About K K Marketing</p>
+          <h2>Supplying Goa’s kitchens, caterers and celebrations <em>since 2015</em>.</h2>
+        </div>
+        <div class="story-cols rv">
+          <p>K K Marketing is a supplier and trading company in Margao, Goa, dealing in disposable products — bowls, plates, paper plates and cups.</p>
+          <p class="muted">Buy in bulk for the best rates, or pick up what you need from the shop at Pajifond. Run by Mr Kantilal Bagrecha.</p>
+        </div>
+        <div class="stats rv">
+          <div><b>2015</b><span class="label">Registered</span></div>
+          <div><b>Bulk</b><span class="label">Carton orders</span></div>
+          <div><b>Goa</b><span class="label">Based in Margao</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section id="clients" class="clients">
+    <div class="wrap">
+      <div class="sec-head grid rv">
+        <p class="label">(03) Who we supply</p>
+        <h2>From a house party to <em>a thousand guests</em>.</h2>
+        <p class="side">Steady stock, so your next order matches the last one.</p>
+      </div>
+      <div class="grid client-list">
+        <div class="client rv"><h3>Caterers &amp; events</h3><p class="muted">Weddings, functions and large gatherings.</p></div>
+        <div class="client rv"><h3>Hotels &amp; restaurants</h3><p class="muted">Takeaway, room service and staff meals.</p></div>
+        <div class="client rv"><h3>Food stalls &amp; cafés</h3><p class="muted">Everyday cups, plates and bowls.</p></div>
+        <div class="client rv"><h3>Shops &amp; resellers</h3><p class="muted">Bulk stock to sell on.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section id="process" class="wrap">
+    <div class="sec-head grid rv">
+      <p class="label">(04) How to order</p>
+      <h2>Four steps, <em>no fuss</em>.</h2>
+      <p class="side">Call, WhatsApp or walk in — whatever is quickest for you.</p>
+    </div>
+    <div class="grid steps">
+      <div class="step rv"><span class="n">01</span><h3>Send your list</h3><p>Items, sizes and how many — plates, bowls, cups.</p></div>
+      <div class="step rv"><span class="n">02</span><h3>Get a rate</h3><p>We reply with prices and what’s in stock.</p></div>
+      <div class="step rv"><span class="n">03</span><h3>Confirm</h3><p>Lock in quantities and a pick-up or delivery time.</p></div>
+      <div class="step rv"><span class="n">04</span><h3>Collect &amp; reorder</h3><p>Collect from Margao or ask about delivery. Reorder anytime.</p></div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="contact">
+    <div class="wrap grid">
+      <div class="contact-head rv">
+        <p class="label">(05) Enquiry</p>
+        <h2 style="margin-top:18px">Planning an event? <em>Let’s talk.</em></h2>
+        <p class="lead">Tell us what you need. We’ll reply on WhatsApp with rates and availability.</p>
+        <!-- TODO: add real phone number -->
+        <div class="details">
+          <div><span class="label">Contact</span>Mr Kantilal Bagrecha</div>
+          <div><span class="label">Phone</span><a href="tel:+910000000000">+91 00000 00000</a></div>
+          <div><span class="label">Visit</span>Shop No. 3, Seagull Apartment,<br>Pajifond, Margao, Goa 403601</div>
+          <div><span class="label">Directions</span><a href="https://share.google/1BVz61cuJOT8y9ZLr" target="_blank" rel="noopener">Open in Maps <svg class="i" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a></div>
+        </div>
+      </div>
+
+      <form id="enquiry" class="rv" novalidate>
+        <h3>Ask for a rate</h3>
+        <div class="field-row">
+          <label class="field"><span class="label">Name</span><input name="name" required autocomplete="name"></label>
+          <label class="field"><span class="label">Phone</span><input name="phone" type="tel" required autocomplete="tel"></label>
+        </div>
+        <div class="field">
+          <span class="label">I’m buying for</span>
+          <div class="chips">
+            <label><input type="radio" name="type" value="Catering / event" checked><span>Catering / event</span></label>
+            <label><input type="radio" name="type" value="Hotel / restaurant"><span>Hotel / restaurant</span></label>
+            <label><input type="radio" name="type" value="Food stall / café"><span>Stall / café</span></label>
+            <label><input type="radio" name="type" value="Shop / resale"><span>Shop / resale</span></label>
+            <label><input type="radio" name="type" value="Home / party"><span>Home / party</span></label>
+          </div>
+        </div>
+        <label class="field"><span class="label">What do you need?</span><textarea name="need" placeholder="e.g. 1,000 paper plates, 500 bowls, 2,000 tea cups"></textarea></label>
+        <div class="form-foot">
+          <small>Opens WhatsApp with your message.</small>
+          <button type="submit" class="btn terra">Send enquiry <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></button>
+        </div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-logo"><svg class="foot-logo-svg" role="img" aria-label="K K Marketing" viewBox="0 0 270.22 64"><circle class="accent" cx="32" cy="32" r="32" fill="#c2512e"/><circle cx="32" cy="32" r="25.6" fill="none" stroke="#f4efe6" stroke-width="1.44" opacity=".6"/><path fill="#f4efe6" transform="translate(14.5 41.31)" d="M1.225 0.0V-18.625H5.050000000000001V-10.3375H5.2875000000000005L12.1125 -18.625H16.7L9.7375 -10.275L16.7875 0.0H12.200000000000001L7.0125 -7.7125L5.050000000000001 -5.3375V0.0ZM18.218500000000002 0.0V-18.625H22.0435V-10.3375H22.281000000000002L29.106 -18.625H33.6935L26.731 -10.275L33.781000000000006 0.0H29.1935L24.006 -7.7125L22.0435 -5.3375V0.0Z"/><path class="accent" fill="#c2512e" d="M79.435546875 36.0V14.173828125H83.91796875V23.8857421875H84.1962890625L92.1943359375 14.173828125H97.5703125L89.4111328125 23.958984375L97.6728515625 36.0H92.296875L86.2177734375 26.9619140625L83.91796875 29.7451171875V36.0ZM99.3498046875 36.0V14.173828125H103.8322265625V23.8857421875H104.110546875L112.10859375 14.173828125H117.4845703125L109.325390625 23.958984375L117.587109375 36.0H112.2111328125L106.13203125 26.9619140625L103.8322265625 29.7451171875V36.0Z"/><path fill="currentColor" d="M126.7640625 14.173828125H132.301171875L138.394921875 29.056640625H138.6439453125L144.75234375 14.173828125H150.31875V36.0H145.92421875V21.6298828125H145.7484375L140.00625 35.8974609375H136.988671875L131.305078125 21.6005859375H131.1146484375V36.0H126.7640625ZM158.0748046875 36.322265625Q156.5220703125 36.322265625 155.28427734375 35.765625Q154.046484375 35.208984375 153.33603515625 34.125Q152.6255859375 33.041015625 152.6255859375 31.4296875Q152.6255859375 30.052734375 153.1236328125 29.13720703125Q153.6216796875 28.2216796875 154.49326171875 27.65771484375Q155.36484375 27.09375 156.47080078125 26.80078125Q157.5767578125 26.5078125 158.792578125 26.390625Q160.2134765625 26.244140625 161.08505859375 26.11962890625Q161.956640625 25.9951171875 162.35947265625 25.72412109375Q162.7623046875 25.453125 162.7623046875 24.92578125V24.8525390625Q162.7623046875 23.8125 162.1177734375 23.23388671875Q161.4732421875 22.6552734375 160.2720703125 22.6552734375Q159.0123046875 22.6552734375 158.265234375 23.2119140625Q157.5181640625 23.7685546875 157.269140625 24.57421875L153.196875 24.2080078125Q153.5337890625 22.7138671875 154.47861328125 21.63720703125Q155.4234375 20.560546875 156.89560546875 19.9892578125Q158.3677734375 19.41796875 160.28671875 19.41796875Q161.605078125 19.41796875 162.835546875 19.7255859375Q164.066015625 20.033203125 165.0474609375 20.69970703125Q166.02890625 21.3662109375 166.6001953125 22.42822265625Q167.171484375 23.490234375 167.171484375 24.9697265625V36.0H162.98203125V33.7294921875H162.86484375Q162.4693359375 34.4765625 161.81748046875 35.05517578125Q161.165625 35.6337890625 160.23544921875 35.97802734375Q159.3052734375 36.322265625 158.0748046875 36.322265625ZM159.3052734375 33.24609375Q160.3453125 33.24609375 161.12900390625 32.82861328125Q161.9126953125 32.4111328125 162.3521484375 31.7080078125Q162.7916015625 31.0048828125 162.7916015625 30.140625V28.3681640625Q162.5865234375 28.5146484375 162.2056640625 28.62451171875Q161.8248046875 28.734375 161.34873046875 28.82958984375Q160.87265625 28.9248046875 160.41123046875 28.99072265625Q159.9498046875 29.056640625 159.5689453125 29.115234375Q158.76328125 29.232421875 158.14072265625 29.49609375Q157.5181640625 29.759765625 157.18125 30.19189453125Q156.8443359375 30.6240234375 156.8443359375 31.2978515625Q156.8443359375 32.25 157.5328125 32.748046875Q158.2212890625 33.24609375 159.3052734375 33.24609375ZM170.16679687500002 36.0V19.623046875H174.42949218750002V22.4794921875H174.60527343750002Q175.04472656250002 20.9560546875 176.10673828125002 20.1796875Q177.16875000000002 19.4033203125 178.54570312500002 19.4033203125Q178.88261718750002 19.4033203125 179.27812500000002 19.43994140625Q179.67363281250002 19.4765625 179.96660156250002 19.5498046875V23.4755859375Q179.65898437500002 23.373046875 179.10234375000002 23.30712890625Q178.54570312500002 23.2412109375 178.06230468750002 23.2412109375Q177.06621093750002 23.2412109375 176.26787109375002 23.6806640625Q175.46953125000002 24.1201171875 175.01542968750002 24.88916015625Q174.56132812500002 25.658203125 174.56132812500002 26.6689453125V36.0ZM185.62792968750003 31.2099609375 185.64257812500003 25.921875H186.30175781250003L191.64843750000003 19.623046875H196.73144531250003L189.65625000000003 27.826171875H188.61621093750003ZM181.64355468750003 36.0V14.173828125H186.03808593750003V36.0ZM191.86816406250003 36.0 186.96093750000003 28.822265625 189.89062500000003 25.7021484375 197.03906250000003 36.0ZM205.71796875000004 36.322265625Q203.21308593750004 36.322265625 201.39667968750004 35.296875Q199.58027343750004 34.271484375 198.60615234375004 32.37451171875Q197.63203125000004 30.4775390625 197.63203125000004 27.8994140625Q197.63203125000004 25.365234375 198.59882812500004 23.4609375Q199.56562500000004 21.556640625 201.33808593750004 20.4873046875Q203.11054687500004 19.41796875 205.49824218750004 19.41796875Q207.09492187500004 19.41796875 208.49384765625004 19.9306640625Q209.89277343750004 20.443359375 210.94746093750004 21.46875Q212.00214843750004 22.494140625 212.58808593750004 24.05419921875Q213.17402343750004 25.6142578125 213.17402343750004 27.7236328125V28.9541015625H199.43378906250004V26.2001953125H211.03535156250004L208.98457031250004 26.9326171875Q208.98457031250004 25.658203125 208.59638671875004 24.71337890625Q208.20820312500004 23.7685546875 207.43916015625004 23.24853515625Q206.67011718750004 22.728515625 205.52753906250004 22.728515625Q204.38496093750004 22.728515625 203.59394531250004 23.255859375Q202.80292968750004 23.783203125 202.38544921875004 24.68408203125Q201.96796875000004 25.5849609375 201.96796875000004 26.7421875V28.6904296875Q201.96796875000004 30.0380859375 202.44404296875004 31.01220703125Q202.92011718750004 31.986328125 203.78437500000004 32.4990234375Q204.64863281250004 33.01171875 205.79121093750004 33.01171875Q206.55292968750004 33.01171875 207.18281250000004 32.7919921875Q207.81269531250004 32.572265625 208.26679687500004 32.14013671875Q208.72089843750004 31.7080078125 208.95527343750004 31.078125L213.02753906250004 31.3857421875Q212.70527343750004 32.8798828125 211.73847656250004 33.98583984375Q210.77167968750004 35.091796875 209.24824218750004 35.70703125Q207.72480468750004 36.322265625 205.71796875000004 36.322265625ZM224.02089843750005 19.623046875V22.962890625H214.26503906250005V19.623046875ZM216.50625000000005 15.7265625H220.90078125000005V30.990234375Q220.90078125000005 31.8251953125 221.28164062500005 32.2353515625Q221.66250000000005 32.6455078125 222.48281250000005 32.6455078125Q222.74648437500005 32.6455078125 223.06875000000005 32.59423828125Q223.39101562500005 32.54296875 223.62539062500005 32.484375L224.32851562500005 35.8095703125Q223.61074218750005 36.029296875 222.92958984375005 36.1318359375Q222.24843750000005 36.234375 221.57460937500005 36.234375Q219.15761718750005 36.234375 217.83193359375005 35.01123046875Q216.50625000000005 33.7880859375 216.50625000000005 31.5908203125ZM226.32773437500006 36.0V19.623046875H230.72226562500006V36.0ZM228.52500000000006 17.484375Q227.52890625000006 17.484375 226.81845703125006 16.8251953125Q226.10800781250006 16.166015625 226.10800781250006 15.228515625Q226.10800781250006 14.291015625 226.81845703125006 13.6318359375Q227.52890625000006 12.97265625 228.52500000000006 12.97265625Q229.52109375000006 12.97265625 230.22421875000006 13.6318359375Q230.92734375000006 14.291015625 230.92734375000006 15.228515625Q230.92734375000006 16.166015625 230.22421875000006 16.8251953125Q229.52109375000006 17.484375 228.52500000000006 17.484375ZM238.11210937500007 26.5224609375V36.0H233.71757812500007V19.623046875H238.03886718750007V22.5087890625H238.21464843750007Q238.77128906250007 21.087890625 239.97978515625007 20.2529296875Q241.18828125000007 19.41796875 243.01933593750007 19.41796875Q244.71855468750007 19.41796875 245.98564453125007 20.15771484375Q247.25273437500007 20.8974609375 247.95585937500007 22.28173828125Q248.65898437500007 23.666015625 248.65898437500007 25.5849609375V36.0H244.26445312500007V26.3466796875Q244.26445312500007 24.8232421875 243.47343750000007 23.95166015625Q242.68242187500007 23.080078125 241.29082031250007 23.080078125Q240.35332031250007 23.080078125 239.63554687500007 23.490234375Q238.91777343750007 23.900390625 238.51494140625007 24.662109375Q238.11210937500007 25.423828125 238.11210937500007 26.5224609375ZM258.9345703125001 42.474609375Q255.66796875000009 42.474609375 253.80761718750009 41.185546875Q251.94726562500009 39.896484375 251.52246093750009 37.9921875L255.56542968750009 37.376953125Q255.75585937500009 37.875 256.1806640625001 38.30712890625Q256.6054687500001 38.7392578125 257.3085937500001 39.01025390625Q258.0117187500001 39.28125 259.0371093750001 39.28125Q260.5458984375001 39.28125 261.5346679687501 38.548828125Q262.5234375000001 37.81640625 262.5234375000001 36.1171875V33.099609375H262.3183593750001Q262.0253906250001 33.744140625 261.4321289062501 34.359375Q260.8388671875001 34.974609375 259.9086914062501 35.3701171875Q258.9785156250001 35.765625 257.6455078125001 35.765625Q255.79980468750009 35.765625 254.29101562500009 34.9013671875Q252.78222656250009 34.037109375 251.88134765625009 32.2646484375Q250.98046875000009 30.4921875 250.98046875000009 27.7822265625Q250.98046875000009 25.013671875 251.88867187500009 23.1533203125Q252.79687500000009 21.29296875 254.31298828125009 20.35546875Q255.82910156250009 19.41796875 257.6601562500001 19.41796875Q259.0371093750001 19.41796875 259.9672851562501 19.88671875Q260.8974609375001 20.35546875 261.4760742187501 21.03662109375Q262.0546875000001 21.7177734375 262.3623046875001 22.376953125H262.5380859375001V19.623046875H266.8593750000001V36.1904296875Q266.8593750000001 38.2705078125 265.8413085937501 39.66943359375Q264.8232421875001 41.068359375 263.0361328125001 41.771484375Q261.2490234375001 42.474609375 258.9345703125001 42.474609375ZM259.0078125000001 32.42578125Q260.6923828125001 32.42578125 261.6152343750001 31.18798828125Q262.5380859375001 29.9501953125 262.5380859375001 27.767578125Q262.5380859375001 26.302734375 262.1279296875001 25.21875Q261.7177734375001 24.134765625 260.9340820312501 23.5341796875Q260.1503906250001 22.93359375 259.0078125000001 22.93359375Q257.8652343750001 22.93359375 257.0742187500001 23.55615234375Q256.2832031250001 24.1787109375 255.8803710937501 25.2626953125Q255.47753906250009 26.3466796875 255.47753906250009 27.767578125Q255.47753906250009 29.1884765625 255.8876953125001 30.23583984375Q256.2978515625001 31.283203125 257.0815429687501 31.8544921875Q257.8652343750001 32.42578125 259.0078125000001 32.42578125Z"/><path fill="currentColor" opacity=".62" d="M79.7912 54.0V47.722H81.4166Q82.0272 47.722 82.4701 47.9542Q82.913 48.1864 83.15809999999999 48.6078Q83.4032 49.0292 83.4032 49.6054V52.108Q83.4032 52.6842 83.15809999999999 53.109899999999996Q82.913 53.5356 82.4701 53.7678Q82.0272 54.0 81.4166 54.0ZM80.5652 53.312H81.4166Q81.9842 53.312 82.3067 52.9938Q82.6292 52.6756 82.6292 52.108V49.6054Q82.6292 49.0464 82.3067 48.7282Q81.9842 48.41 81.4166 48.41H80.5652ZM85.235 54.0V53.2948H86.51639999999999V48.4272H85.235V47.722H88.589V48.4272H87.3076V53.2948H88.589V54.0ZM92.27839999999999 54.086Q91.65919999999998 54.086 91.21629999999999 53.879599999999996Q90.77339999999998 53.6732 90.53259999999997 53.2862Q90.29179999999998 52.8992 90.2832 52.366H91.05719999999998Q91.05719999999998 52.839 91.37969999999999 53.1142Q91.70219999999999 53.3894 92.27839999999999 53.3894Q92.82019999999999 53.3894 93.12549999999999 53.1228Q93.43079999999999 52.8562 93.43079999999999 52.3832Q93.43079999999999 52.0048 93.22869999999999 51.721000000000004Q93.02659999999999 51.4372 92.64819999999999 51.3254L91.79679999999999 51.0588Q91.15179999999998 50.861 90.80349999999999 50.3966Q90.45519999999999 49.9322 90.45519999999999 49.3044Q90.45519999999999 48.797 90.6831 48.4229Q90.91099999999999 48.0488 91.32379999999998 47.8381Q91.73659999999998 47.6274 92.2956 47.6274Q93.12119999999999 47.6274 93.61999999999999 48.087500000000006Q94.1188 48.5476 94.1274 49.313H93.3534Q93.3534 48.8486 93.07389999999998 48.586299999999994Q92.79439999999998 48.324 92.28699999999999 48.324Q91.78819999999999 48.324 91.50869999999999 48.5648Q91.22919999999999 48.8056 91.22919999999999 49.2356Q91.22919999999999 49.6226 91.4356 49.9064Q91.64199999999998 50.1902 92.02899999999998 50.3106L92.88899999999998 50.5858Q93.51679999999999 50.7836 93.86079999999998 51.2566Q94.20479999999999 51.7296 94.20479999999999 52.366Q94.20479999999999 52.882 93.964 53.269Q93.72319999999999 53.656 93.28889999999998 53.870999999999995Q92.85459999999999 54.086 92.27839999999999 54.086ZM95.78719999999998 54.0V47.722H97.80819999999999Q98.39299999999999 47.722 98.82299999999998 47.9499Q99.25299999999999 48.1778 99.48949999999999 48.590599999999995Q99.72599999999998 49.0034 99.72599999999998 49.571Q99.72599999999998 50.13 99.48949999999999 50.5471Q99.25299999999999 50.9642 98.82299999999998 51.192099999999996Q98.39299999999999 51.42 97.80819999999999 51.42H96.56119999999999V54.0ZM96.56119999999999 50.7234H97.80819999999999Q98.31559999999998 50.7234 98.62089999999998 50.409499999999994Q98.92619999999998 50.0956 98.92619999999998 49.571Q98.92619999999998 49.0378 98.62089999999998 48.7282Q98.31559999999998 48.4186 97.80819999999999 48.4186H96.56119999999999ZM102.90799999999997 54.086Q102.34039999999997 54.086 101.93189999999998 53.870999999999995Q101.52339999999998 53.656 101.30409999999998 53.2475Q101.08479999999997 52.839 101.08479999999997 52.28V49.442Q101.08479999999997 48.8744 101.30409999999998 48.470200000000006Q101.52339999999998 48.066 101.93189999999998 47.851Q102.34039999999997 47.636 102.90799999999997 47.636Q103.47559999999997 47.636 103.88409999999998 47.851Q104.29259999999998 48.066 104.51189999999997 48.470200000000006Q104.73119999999997 48.8744 104.73119999999997 49.4334V52.28Q104.73119999999997 52.839 104.51189999999997 53.2475Q104.29259999999998 53.656 103.88409999999998 53.870999999999995Q103.47559999999997 54.086 102.90799999999997 54.086ZM102.90799999999997 53.3894Q103.41539999999998 53.3894 103.68629999999997 53.1013Q103.95719999999997 52.8132 103.95719999999997 52.28V49.442Q103.95719999999997 48.9088 103.68629999999997 48.6207Q103.41539999999998 48.3326 102.90799999999997 48.3326Q102.40919999999997 48.3326 102.13399999999997 48.6207Q101.85879999999997 48.9088 101.85879999999997 49.442V52.28Q101.85879999999997 52.8132 102.13399999999997 53.1013Q102.40919999999997 53.3894 102.90799999999997 53.3894ZM108.27439999999997 54.086Q107.65519999999997 54.086 107.21229999999997 53.879599999999996Q106.76939999999996 53.6732 106.52859999999995 53.2862Q106.28779999999996 52.8992 106.27919999999997 52.366H107.05319999999996Q107.05319999999996 52.839 107.37569999999997 53.1142Q107.69819999999997 53.3894 108.27439999999997 53.3894Q108.81619999999997 53.3894 109.12149999999997 53.1228Q109.42679999999997 52.8562 109.42679999999997 52.3832Q109.42679999999997 52.0048 109.22469999999997 51.721000000000004Q109.02259999999997 51.4372 108.64419999999997 51.3254L107.79279999999997 51.0588Q107.14779999999996 50.861 106.79949999999997 50.3966Q106.45119999999997 49.9322 106.45119999999997 49.3044Q106.45119999999997 48.797 106.67909999999998 48.4229Q106.90699999999997 48.0488 107.31979999999996 47.8381Q107.73259999999996 47.6274 108.29159999999997 47.6274Q109.11719999999997 47.6274 109.61599999999997 48.087500000000006Q110.11479999999997 48.5476 110.12339999999998 49.313H109.34939999999997Q109.34939999999997 48.8486 109.06989999999996 48.586299999999994Q108.79039999999996 48.324 108.28299999999997 48.324Q107.78419999999997 48.324 107.50469999999997 48.5648Q107.22519999999997 48.8056 107.22519999999997 49.2356Q107.22519999999997 49.6226 107.43159999999997 49.9064Q107.63799999999996 50.1902 108.02499999999996 50.3106L108.88499999999996 50.5858Q109.51279999999997 50.7836 109.85679999999996 51.2566Q110.20079999999997 51.7296 110.20079999999997 52.366Q110.20079999999997 52.882 109.95999999999998 53.269Q109.71919999999997 53.656 109.28489999999996 53.870999999999995Q108.85059999999997 54.086 108.27439999999997 54.086ZM111.42199999999997 54.0 113.05599999999995 47.722H114.09659999999997L115.72199999999997 54.0H114.93939999999996L114.52659999999996 52.3316H112.62599999999996L112.21319999999996 54.0ZM112.78079999999996 51.678H114.36319999999996L113.88159999999996 49.743Q113.74399999999996 49.1926 113.66659999999996 48.8228Q113.58919999999996 48.453 113.57199999999996 48.3412Q113.55479999999996 48.453 113.47739999999996 48.8228Q113.39999999999996 49.1926 113.26239999999996 49.7344ZM117.12379999999996 54.0V47.722H118.90399999999995Q119.76399999999995 47.722 120.24989999999995 48.152Q120.73579999999995 48.582 120.73579999999995 49.3474Q120.73579999999995 49.7774 120.55519999999996 50.095600000000005Q120.37459999999996 50.4138 120.04349999999997 50.585800000000006Q119.71239999999996 50.7578 119.24799999999996 50.7492V50.6202Q119.74679999999995 50.6116 120.11229999999995 50.8094Q120.47779999999996 51.0072 120.67989999999995 51.376999999999995Q120.88199999999995 51.7468 120.88199999999995 52.2542Q120.88199999999995 52.7874 120.65839999999994 53.183Q120.43479999999995 53.5786 120.02199999999996 53.7893Q119.60919999999996 54.0 119.03299999999996 54.0ZM117.88059999999996 53.3034H118.94699999999996Q119.48879999999996 53.3034 119.80269999999996 53.0153Q120.11659999999995 52.7272 120.11659999999995 52.2284Q120.11659999999995 51.7124 119.80269999999996 51.3899Q119.48879999999996 51.0674 118.94699999999996 51.0674H117.88059999999996ZM117.88059999999996 50.3966H118.89539999999995Q119.39419999999996 50.3966 119.68229999999996 50.129999999999995Q119.97039999999996 49.8634 119.97039999999996 49.4076Q119.97039999999996 48.9518 119.68659999999996 48.685199999999995Q119.40279999999996 48.4186 118.90399999999995 48.4186H117.88059999999996ZM122.64499999999995 54.0V47.722H123.41899999999995V53.2948H126.25699999999995V54.0ZM127.84799999999994 54.0V47.722H131.45999999999995V48.4272H128.61339999999996V50.3708H131.15899999999993V51.0674H128.61339999999996V53.2948H131.45999999999995V54.0ZM134.93439999999993 54.086Q134.31519999999995 54.086 133.87229999999994 53.879599999999996Q133.42939999999993 53.6732 133.18859999999995 53.2862Q132.94779999999994 52.8992 132.93919999999994 52.366H133.71319999999994Q133.71319999999994 52.839 134.03569999999993 53.1142Q134.35819999999993 53.3894 134.93439999999993 53.3894Q135.47619999999995 53.3894 135.78149999999994 53.1228Q136.08679999999993 52.8562 136.08679999999993 52.3832Q136.08679999999993 52.0048 135.88469999999992 51.721000000000004Q135.68259999999992 51.4372 135.30419999999992 51.3254L134.45279999999994 51.0588Q133.80779999999993 50.861 133.45949999999993 50.3966Q133.11119999999994 49.9322 133.11119999999994 49.3044Q133.11119999999994 48.797 133.33909999999995 48.4229Q133.56699999999995 48.0488 133.97979999999995 47.8381Q134.39259999999993 47.6274 134.95159999999993 47.6274Q135.77719999999994 47.6274 136.27599999999995 48.087500000000006Q136.77479999999994 48.5476 136.78339999999994 49.313H136.00939999999994Q136.00939999999994 48.8486 135.72989999999993 48.586299999999994Q135.45039999999995 48.324 134.94299999999993 48.324Q134.44419999999994 48.324 134.16469999999993 48.5648Q133.88519999999994 48.8056 133.88519999999994 49.2356Q133.88519999999994 49.6226 134.09159999999994 49.9064Q134.29799999999994 50.1902 134.68499999999995 50.3106L135.54499999999993 50.5858Q136.17279999999994 50.7836 136.51679999999993 51.2566Q136.86079999999993 51.7296 136.86079999999993 52.366Q136.86079999999993 52.882 136.61999999999995 53.269Q136.37919999999994 53.656 135.94489999999993 53.870999999999995Q135.51059999999993 54.086 134.93439999999993 54.086ZM145.56399999999994 51.763999999999996Q145.23719999999992 51.763999999999996 145.04369999999992 51.574799999999996Q144.85019999999992 51.3856 144.85019999999992 51.0674Q144.85019999999992 50.732 145.04369999999992 50.5342Q145.23719999999992 50.3364 145.56399999999994 50.3364Q145.89079999999993 50.3364 146.08429999999993 50.5342Q146.27779999999993 50.732 146.27779999999993 51.0674Q146.27779999999993 51.3856 146.08429999999993 51.574799999999996Q145.89079999999993 51.763999999999996 145.56399999999994 51.763999999999996ZM154.30159999999992 54.0V47.722H155.3163999999999L155.9699999999999 49.751599999999996Q156.0645999999999 50.0268 156.1419999999999 50.297700000000006Q156.21939999999992 50.5686 156.2537999999999 50.7148Q156.2967999999999 50.5686 156.36559999999992 50.297700000000006Q156.4343999999999 50.0268 156.5203999999999 49.743L157.13959999999992 47.722H158.15439999999992V54.0H157.3975999999999V51.721000000000004Q157.3975999999999 51.3426 157.4233999999999 50.861Q157.4491999999999 50.3794 157.4921999999999 49.8763Q157.53519999999992 49.3732 157.58249999999992 48.9131Q157.6297999999999 48.453 157.6641999999999 48.109L156.6493999999999 51.248H155.83239999999992L154.8089999999999 48.109Q154.85199999999992 48.4444 154.89499999999992 48.887299999999996Q154.9379999999999 49.3302 154.9723999999999 49.8247Q155.0067999999999 50.3192 155.03259999999992 50.8094Q155.05839999999992 51.2996 155.05839999999992 51.721000000000004V54.0ZM159.4099999999999 54.0 161.0439999999999 47.722H162.0845999999999L163.7099999999999 54.0H162.9273999999999L162.51459999999992 52.3316H160.6139999999999L160.20119999999991 54.0ZM160.7687999999999 51.678H162.3511999999999L161.8695999999999 49.743Q161.7319999999999 49.1926 161.6545999999999 48.8228Q161.5771999999999 48.453 161.55999999999992 48.3412Q161.54279999999991 48.453 161.4653999999999 48.8228Q161.3879999999999 49.1926 161.2503999999999 49.7344ZM165.1031999999999 54.0V47.722H167.0467999999999Q167.6057999999999 47.722 168.02719999999988 47.9499Q168.44859999999989 48.1778 168.6807999999999 48.581999999999994Q168.9129999999999 48.9862 168.9129999999999 49.528Q168.9129999999999 50.1644 168.5818999999999 50.6202Q168.25079999999988 51.076 167.68319999999989 51.248L168.9989999999999 54.0H168.0873999999999L166.8833999999999 51.334H165.8771999999999V54.0ZM165.8771999999999 50.6374H167.0467999999999Q167.5283999999999 50.6374 167.8207999999999 50.3321Q168.1131999999999 50.0268 168.1131999999999 49.528Q168.1131999999999 49.0206 167.8207999999999 48.7196Q167.5283999999999 48.4186 167.0467999999999 48.4186H165.8771999999999ZM172.25839999999988 54.086Q171.69079999999988 54.086 171.2736999999999 53.870999999999995Q170.8565999999999 53.656 170.6286999999999 53.2475Q170.4007999999999 52.839 170.4007999999999 52.28V49.442Q170.4007999999999 48.8744 170.6286999999999 48.470200000000006Q170.8565999999999 48.066 171.2736999999999 47.851Q171.69079999999988 47.636 172.25839999999988 47.636Q172.82599999999988 47.636 173.23879999999988 47.8553Q173.6515999999999 48.074600000000004 173.8751999999999 48.47880000000001Q174.0987999999999 48.883 174.0987999999999 49.442H173.3247999999999Q173.3247999999999 48.9088 173.04529999999988 48.6207Q172.7657999999999 48.3326 172.25839999999988 48.3326Q171.7509999999999 48.3326 171.46289999999988 48.6164Q171.1747999999999 48.9002 171.1747999999999 49.4334V52.28Q171.1747999999999 52.8132 171.46289999999988 53.1056Q171.7509999999999 53.398 172.25839999999988 53.398Q172.7657999999999 53.398 173.04529999999988 53.1056Q173.3247999999999 52.8132 173.3247999999999 52.28V51.506H172.05199999999988V50.8008H174.0987999999999V52.28Q174.0987999999999 52.8304 173.8751999999999 53.2389Q173.6515999999999 53.6474 173.23879999999988 53.866699999999994Q172.82599999999988 54.086 172.25839999999988 54.086ZM175.4059999999999 54.0 177.03999999999988 47.722H178.0805999999999L179.70599999999988 54.0H178.92339999999987L178.5105999999999 52.3316H176.60999999999987L176.1971999999999 54.0ZM176.7647999999999 51.678H178.34719999999987L177.8655999999999 49.743Q177.7279999999999 49.1926 177.65059999999988 48.8228Q177.57319999999987 48.453 177.5559999999999 48.3412Q177.5387999999999 48.453 177.46139999999988 48.8228Q177.38399999999987 49.1926 177.24639999999988 49.7344ZM182.8879999999999 54.086Q182.3203999999999 54.086 181.9118999999999 53.870999999999995Q181.50339999999989 53.656 181.28409999999988 53.2475Q181.06479999999988 52.839 181.06479999999988 52.28V49.442Q181.06479999999988 48.8744 181.28409999999988 48.470200000000006Q181.50339999999989 48.066 181.9118999999999 47.851Q182.3203999999999 47.636 182.8879999999999 47.636Q183.4555999999999 47.636 183.8640999999999 47.851Q184.27259999999987 48.066 184.49189999999987 48.470200000000006Q184.71119999999988 48.8744 184.71119999999988 49.4334V52.28Q184.71119999999988 52.839 184.49189999999987 53.2475Q184.27259999999987 53.656 183.8640999999999 53.870999999999995Q183.4555999999999 54.086 182.8879999999999 54.086ZM182.8879999999999 53.3894Q183.39539999999988 53.3894 183.66629999999986 53.1013Q183.93719999999988 52.8132 183.93719999999988 52.28V49.442Q183.93719999999988 48.9088 183.66629999999986 48.6207Q183.39539999999988 48.3326 182.8879999999999 48.3326Q182.38919999999987 48.3326 182.11399999999986 48.6207Q181.83879999999988 48.9088 181.83879999999988 49.442V52.28Q181.83879999999988 52.8132 182.11399999999986 53.1013Q182.38919999999987 53.3894 182.8879999999999 53.3894ZM187.05899999999988 55.376 187.74699999999987 52.7014H188.86499999999987L187.74699999999987 55.376ZM198.91839999999985 54.086Q198.35079999999985 54.086 197.93369999999987 53.870999999999995Q197.51659999999987 53.656 197.28869999999986 53.2475Q197.06079999999986 52.839 197.06079999999986 52.28V49.442Q197.06079999999986 48.8744 197.28869999999986 48.470200000000006Q197.51659999999987 48.066 197.93369999999987 47.851Q198.35079999999985 47.636 198.91839999999985 47.636Q199.48599999999985 47.636 199.89879999999985 47.8553Q200.31159999999986 48.074600000000004 200.53519999999986 48.47880000000001Q200.75879999999987 48.883 200.75879999999987 49.442H199.98479999999986Q199.98479999999986 48.9088 199.70529999999985 48.6207Q199.42579999999987 48.3326 198.91839999999985 48.3326Q198.41099999999986 48.3326 198.12289999999985 48.6164Q197.83479999999986 48.9002 197.83479999999986 49.4334V52.28Q197.83479999999986 52.8132 198.12289999999985 53.1056Q198.41099999999986 53.398 198.91839999999985 53.398Q199.42579999999987 53.398 199.70529999999985 53.1056Q199.98479999999986 52.8132 199.98479999999986 52.28V51.506H198.71199999999985V50.8008H200.75879999999987V52.28Q200.75879999999987 52.8304 200.53519999999986 53.2389Q200.31159999999986 53.6474 199.89879999999985 53.866699999999994Q199.48599999999985 54.086 198.91839999999985 54.086ZM204.21599999999987 54.086Q203.64839999999987 54.086 203.23989999999986 53.870999999999995Q202.83139999999986 53.656 202.61209999999986 53.2475Q202.39279999999985 52.839 202.39279999999985 52.28V49.442Q202.39279999999985 48.8744 202.61209999999986 48.470200000000006Q202.83139999999986 48.066 203.23989999999986 47.851Q203.64839999999987 47.636 204.21599999999987 47.636Q204.78359999999986 47.636 205.19209999999987 47.851Q205.60059999999984 48.066 205.81989999999985 48.470200000000006Q206.03919999999985 48.8744 206.03919999999985 49.4334V52.28Q206.03919999999985 52.839 205.81989999999985 53.2475Q205.60059999999984 53.656 205.19209999999987 53.870999999999995Q204.78359999999986 54.086 204.21599999999987 54.086ZM204.21599999999987 53.3894Q204.72339999999986 53.3894 204.99429999999984 53.1013Q205.26519999999985 52.8132 205.26519999999985 52.28V49.442Q205.26519999999985 48.9088 204.99429999999984 48.6207Q204.72339999999986 48.3326 204.21599999999987 48.3326Q203.71719999999985 48.3326 203.44199999999984 48.6207Q203.16679999999985 48.9088 203.16679999999985 49.442V52.28Q203.16679999999985 52.8132 203.44199999999984 53.1013Q203.71719999999985 53.3894 204.21599999999987 53.3894ZM207.39799999999985 54.0 209.03199999999984 47.722H210.07259999999985L211.69799999999984 54.0H210.91539999999983L210.50259999999986 52.3316H208.60199999999983L208.18919999999986 54.0ZM208.75679999999986 51.678H210.33919999999983L209.85759999999985 49.743Q209.71999999999986 49.1926 209.64259999999985 48.8228Q209.56519999999983 48.453 209.54799999999986 48.3412Q209.53079999999986 48.453 209.45339999999985 48.8228Q209.37599999999983 49.1926 209.23839999999984 49.7344Z"/></svg></div>
+    <div class="grid foot-row label">
+      <span>© <span id="yr"></span> K K Marketing</span>
+      <span>Margao, Goa</span>
+      <a href="https://wa.me/910000000000">WhatsApp</a>
+      <a href="#top">Back to top <svg class="i" aria-hidden="true"><use href="#i-arrow-up"/></svg></a>
+    </div>
+    <p class="credits">K K Marketing · Disposable Tableware &amp; Catering Supplies · Margao, Goa.</p>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (!e.isIntersecting) return;
+      setTimeout(() => e.target.classList.add('in'), i * 70);
+      io.unobserve(e.target);
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+  // Enquiry → WhatsApp
+  const WHATSAPP = '910000000000'; // TODO: real WhatsApp number, country code first, digits only
+  document.getElementById('enquiry').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const name = (f.get('name') || '').trim();
+    const phone = (f.get('phone') || '').trim();
+    if (!name || !phone) {
+      e.target.querySelector(name ? '[name=phone]' : '[name=name]').focus();
+      return;
+    }
+    const msg = `Hi K K Marketing, I'm ${name} (${phone}).\nBuying for: ${f.get('type')}\nNeed: ${(f.get('need') || '').trim() || '—'}`;
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+  });
+</script>
+</body>
+</html>
