@@ -1,5 +1,6 @@
 // K K Marketing — shared behaviour (all pages)
-const WHATSAPP = '910000000000'; // TODO: real WhatsApp number, country code first, digits only
+// WhatsApp number comes from partials/config.php via <body data-whatsapp>
+const WHATSAPP = document.body.dataset.whatsapp;
 
 document.getElementById('yr').textContent = new Date().getFullYear();
 

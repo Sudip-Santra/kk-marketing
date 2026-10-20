@@ -1,7 +1,7 @@
 # K K Marketing — Apache config
-# Pages live as folder/index.html, so URLs stay clean: /  and  /products/
+# Pages live as folder/index.php (shared parts in partials/), so URLs stay clean: /  and  /products/
 
-DirectoryIndex index.html
+DirectoryIndex index.php index.html
 Options -Indexes
 DirectorySlash On
 
@@ -12,12 +12,15 @@ DirectorySlash On
   # RewriteCond %{HTTPS} off
   # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # /index.html -> /   and   /products/index.html -> /products/
-  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.html[\s?] [NC]
-  RewriteRule ^(.*/)?index\.html$ /%1 [L,R=301,NE]
+  # Shared PHP partials are included by pages, never opened directly
+  RewriteRule ^partials/ - [F,L]
 
-  # Old-style /products.html -> /products/
-  RewriteRule ^products\.html$ /products/ [L,R=301]
+  # /index.php -> /   and   /products/index.php -> /products/
+  RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.(php|html)[\s?] [NC]
+  RewriteRule ^(.*/)?index\.(php|html)$ /%1 [L,R=301,NE]
+
+  # Old-style /products.html, /about.html -> folder URLs
+  RewriteRule ^(products|about)\.html$ /$1/ [L,R=301]
 </IfModule>
 
 # Compression

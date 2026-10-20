@@ -127,6 +127,9 @@ nav { height: 60px; align-items: center; }
 }
 .links a:hover, .links a:focus-visible { color: var(--terra); }
 .links a:hover::after, .links a:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+/* Current page */
+.links a[aria-current="page"] { color: var(--terra); }
+.links a[aria-current="page"]::after { transform: scaleX(1); }
 .nav-cta { grid-column: 10 / span 3; justify-self: end; display: flex; gap: 8px; }
 
 /* ==========================================================================
