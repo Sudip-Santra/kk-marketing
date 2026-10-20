@@ -11,3 +11,6 @@ desktop.ini
 
 # Logs
 *.log
+
+# Static build output (php build.php)
+dist/
