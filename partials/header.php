@@ -9,7 +9,7 @@ $nav = [
 ?>
 <div class="bar">
   <div class="wrap">
-    <span class="label"><span class="dot"></span>Disposable plates, bowls &amp; cups — Margao, Goa</span>
+    <span class="label">Disposable plates, bowls &amp; cups — Margao, Goa</span>
     <span class="label hide-sm">Supplying since 2015 · Bulk orders welcome</span>
   </div>
 </div>
