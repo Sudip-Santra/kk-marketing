@@ -58,31 +58,31 @@ include __DIR__ . '/../partials/head.php';
       <p class="side">Common sizes in stock, packed in bulk. See every item and pack size in the catalogue.</p>
     </div>
     <div class="a-ranges">
-        <a class="a-range rv" href="../products/#paper-plates">
+        <a class="a-range rv" href="../products/paper-plates">
           <figure><img src="../assets/paper-plate.jpg" alt="" loading="lazy" style="object-position:center 60%"></figure>
           <span class="label">01</span>
           <h3>Paper plates</h3>
           <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
-        <a class="a-range rv" href="../products/#paper-cups">
+        <a class="a-range rv" href="../products/paper-cups">
           <figure><img src="../assets/paper-cups.jpg" alt="" loading="lazy" style="object-position:center 55%"></figure>
           <span class="label">02</span>
           <h3>Paper cups</h3>
           <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
-        <a class="a-range rv" href="../products/#bowls">
+        <a class="a-range rv" href="../products/bowls">
           <figure><img src="../assets/paper-bowl.jpg" alt="" loading="lazy" style="object-position:center 55%"></figure>
           <span class="label">03</span>
           <h3>Bowls &amp; containers</h3>
           <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
-        <a class="a-range rv" href="../products/#areca">
+        <a class="a-range rv" href="../products/areca">
           <figure><img src="../assets/areca-plates.jpg" alt="" loading="lazy" style="object-position:center 60%"></figure>
           <span class="label">04</span>
           <h3>Areca leaf plates</h3>
           <span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span>
         </a>
-        <a class="a-range rv" href="../products/#trays-cutlery">
+        <a class="a-range rv" href="../products/trays-cutlery">
           <figure><img src="../assets/hero-range.jpg" alt="" loading="lazy" style="object-position:right bottom"></figure>
           <span class="label">05</span>
           <h3>Trays &amp; cutlery</h3>

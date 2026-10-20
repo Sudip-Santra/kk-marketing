@@ -4,12 +4,29 @@ $base        = '../';
 $title       = 'Products — K K Marketing, Margao';
 $description = 'Paper plates, paper cups, bowls, food containers, areca leaf plates, meal trays and wooden cutlery from K K Marketing, Margao, Goa. Choose your packs and order on WhatsApp.';
 $scripts     = ['products.js'];
+
+// /products/<range> opens this page scrolled to that range (see .htaccess / router.php)
+$ranges = [
+    'paper-plates'  => 'Paper plates',
+    'paper-cups'    => 'Paper cups',
+    'bowls'         => 'Bowls & containers',
+    'areca'         => 'Areca leaf plates',
+    'trays-cutlery' => 'Trays & cutlery',
+];
+$slug = basename(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
+if ($slug !== 'products' && $slug !== '' && $slug !== 'index.php') {
+    if (!isset($ranges[$slug])) {
+        http_response_code(404);
+    } else {
+        $title = $ranges[$slug] . ' — K K Marketing, Margao';
+    }
+}
 include __DIR__ . '/../partials/head.php';
 ?>
 
 <main>
   <!-- Page head -->
-  <div class="p-head wrap grid">
+  <div class="p-head wrap grid" data-route="">
     <div class="p-head-text">
       <div>
         <nav class="crumbs label rv" aria-label="Breadcrumb"><a href="../">Home</a><span>/</span><span aria-current="page">Products</span></nav>
@@ -31,16 +48,16 @@ include __DIR__ . '/../partials/head.php';
   <!-- Range navigation -->
   <nav class="cat-nav" aria-label="Product ranges">
     <div class="wrap">
-      <a href="#paper-plates"><span class="label">01</span>Paper plates</a>
-      <a href="#paper-cups"><span class="label">02</span>Paper cups</a>
-      <a href="#bowls"><span class="label">03</span>Bowls &amp; containers</a>
-      <a href="#areca"><span class="label">04</span>Areca leaf plates</a>
-      <a href="#trays-cutlery"><span class="label">05</span>Trays &amp; cutlery</a>
+      <a href="paper-plates"><span class="label">01</span>Paper plates</a>
+      <a href="paper-cups"><span class="label">02</span>Paper cups</a>
+      <a href="bowls"><span class="label">03</span>Bowls &amp; containers</a>
+      <a href="areca"><span class="label">04</span>Areca leaf plates</a>
+      <a href="trays-cutlery"><span class="label">05</span>Trays &amp; cutlery</a>
     </div>
   </nav>
 
   <!-- Range 01: Paper plates -->
-  <section class="range" id="paper-plates">
+  <section class="range" id="paper-plates" data-route="paper-plates">
     <div class="wrap grid">
       <aside class="range-aside rv">
         <figure class="range-img"><img src="../assets/paper-plate.jpg" alt="Stacks of printed, plain and silver-laminated paper plates" loading="lazy" style="object-position:center 60%"><span class="no label">01</span></figure>
@@ -147,7 +164,7 @@ include __DIR__ . '/../partials/head.php';
   </section>
 
   <!-- Range 02: Paper cups -->
-  <section class="range" id="paper-cups">
+  <section class="range" id="paper-cups" data-route="paper-cups">
     <div class="wrap grid">
       <aside class="range-aside rv">
         <figure class="range-img"><img src="../assets/paper-cups.jpg" alt="Printed chai cups, ripple coffee cups with lids and plain white cups" loading="lazy" style="object-position:center 55%"><span class="no label">02</span></figure>
@@ -239,7 +256,7 @@ include __DIR__ . '/../partials/head.php';
   </section>
 
   <!-- Range 03: Bowls & containers -->
-  <section class="range" id="bowls">
+  <section class="range" id="bowls" data-route="bowls">
     <div class="wrap grid">
       <aside class="range-aside rv">
         <figure class="range-img"><img src="../assets/paper-bowl.jpg" alt="Kraft paper bowls with lids, silver dona bowls and foil containers" loading="lazy" style="object-position:center 55%"><span class="no label">03</span></figure>
@@ -346,7 +363,7 @@ include __DIR__ . '/../partials/head.php';
   </section>
 
   <!-- Range 04: Areca leaf plates -->
-  <section class="range" id="areca">
+  <section class="range" id="areca" data-route="areca">
     <div class="wrap grid">
       <aside class="range-aside rv">
         <figure class="range-img"><img src="../assets/areca-plates.jpg" alt="Square and round areca palm leaf plates and bowls" loading="lazy" style="object-position:center 60%"><span class="no label">04</span></figure>
@@ -453,7 +470,7 @@ include __DIR__ . '/../partials/head.php';
   </section>
 
   <!-- Range 05: Trays & cutlery -->
-  <section class="range" id="trays-cutlery">
+  <section class="range" id="trays-cutlery" data-route="trays-cutlery">
     <div class="wrap grid">
       <aside class="range-aside rv">
         <figure class="range-img"><img src="../assets/hero-range.jpg" alt="Compartment meal trays and wooden spoons and forks" loading="lazy" style="object-position:right bottom"><span class="no label">05</span></figure>

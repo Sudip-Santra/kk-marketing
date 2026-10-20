@@ -3,12 +3,23 @@ $page        = 'home';
 $base        = '';
 $title       = 'K K Marketing — Disposable Plates, Bowls & Cups';
 $description = 'K K Marketing, Margao, Goa — supplier and trader of disposable plates, paper plates, bowls and cups since 2015. Bulk supply for caterers, hotels, restaurants, events and shops.';
+
+// /who-we-supply, /how-to-order, /contact open this page at that section (see .htaccess / router.php)
+$sections = [
+    'who-we-supply' => 'Who we supply',
+    'how-to-order'  => 'How to order',
+    'contact'       => 'Get a rate',
+];
+$slug = basename(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
+if (isset($sections[$slug])) {
+    $title = $sections[$slug] . ' — K K Marketing, Margao';
+}
 include __DIR__ . '/partials/head.php';
 ?>
 
 <main>
   <!-- Hero -->
-  <div class="hero wrap grid">
+  <div class="hero wrap grid" data-route="">
     <div class="hero-text">
       <div>
         <p class="label muted rv">Paper plates · Bowls · Cups · Leaf plates</p>
@@ -46,26 +57,26 @@ include __DIR__ . '/partials/head.php';
   </div>
 
   <!-- Products -->
-  <section id="products" class="wrap">
+  <section id="products" class="wrap" data-route="">
     <div class="sec-head grid rv">
       <p class="label">(01) Products</p>
       <h2>Use once. <em>Serve well.</em></h2>
       <p class="side">Stocked in common sizes and packed in bulk. Ask for samples before a large order.</p>
     </div>
     <div class="grid collections">
-      <a href="products/#paper-plates" class="card c-lg rv">
+      <a href="products/paper-plates" class="card c-lg rv">
         <figure class="ph"><img src="assets/paper-plate.jpg" alt="Stacks of printed floral buffet paper plates, fluted plates, and silver snack plates" loading="lazy"><span class="no label">01</span></figure>
         <div class="meta"><div><h3>Paper plates</h3><p>Round plates for meals, snacks and buffets, in a range of sizes.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="products/#paper-cups" class="card c-sm rv">
+      <a href="products/paper-cups" class="card c-sm rv">
         <figure class="ph"><img src="assets/paper-cups.jpg" alt="Assortment of disposable paper cups for Indian chai, coffee, and beverages" loading="lazy"><span class="no label">02</span></figure>
         <div class="meta"><div><h3>Paper cups</h3><p>For tea, coffee, water and juice.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="products/#bowls" class="card c-sm rv">
+      <a href="products/bowls" class="card c-sm rv">
         <figure class="ph"><img src="assets/paper-bowl.jpg" alt="Kraft paper curry and takeaway food bowls with lids and silver dona bowls" loading="lazy"><span class="no label">03</span></figure>
         <div class="meta"><div><h3>Bowls</h3><p>For curries, desserts and takeaway.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
-      <a href="products/#areca" class="card c-sm rv">
+      <a href="products/areca" class="card c-sm rv">
         <figure class="ph"><img src="assets/areca-plates.jpg" alt="Natural areca palm leaf plates and bowls showing organic woodgrain texture" loading="lazy"><span class="no label">04</span></figure>
         <div class="meta"><div><h3>Areca leaf plates</h3><p>Natural, sturdy, plastic-free.</p></div><span class="go"><svg class="i" aria-hidden="true"><use href="#i-arrow-right"/></svg></span></div>
       </a>
@@ -81,7 +92,7 @@ include __DIR__ . '/partials/head.php';
   </section>
 
   <!-- Story -->
-  <section id="about" class="story">
+  <section id="about" class="story" data-route="">
     <div class="wrap grid">
       <figure class="story-img rv"><img src="assets/leaf-plates.jpg" alt="K K Marketing wholesale supply showroom in Margao, Goa" loading="lazy"></figure>
       <div class="story-body">
@@ -104,7 +115,7 @@ include __DIR__ . '/partials/head.php';
   </section>
 
   <!-- Clients -->
-  <section id="clients" class="clients">
+  <section id="who-we-supply" class="clients" data-route="who-we-supply">
     <div class="wrap">
       <div class="sec-head grid rv">
         <p class="label">(03) Who we supply</p>
@@ -121,7 +132,7 @@ include __DIR__ . '/partials/head.php';
   </section>
 
   <!-- Process -->
-  <section id="process" class="wrap">
+  <section id="how-to-order" class="wrap" data-route="how-to-order">
     <div class="sec-head grid rv">
       <p class="label">(04) How to order</p>
       <h2>Four steps, <em>no fuss</em>.</h2>
@@ -136,7 +147,7 @@ include __DIR__ . '/partials/head.php';
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="contact">
+  <section id="contact" class="contact" data-route="contact">
     <div class="wrap grid">
       <div class="contact-head rv">
         <p class="label">(05) Enquiry</p>

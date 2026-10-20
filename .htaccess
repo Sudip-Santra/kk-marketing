@@ -12,12 +12,24 @@ DirectorySlash On
   # RewriteCond %{HTTPS} off
   # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-  # Shared PHP partials are included by pages, never opened directly
+  # Shared PHP partials are included by pages, never opened directly;
+  # router.php is only for the local dev server
   RewriteRule ^partials/ - [F,L]
+  RewriteRule ^router\.php$ - [F,L]
 
   # /index.php -> /   and   /products/index.php -> /products/
   RewriteCond %{THE_REQUEST} \s/+(.*/)?index\.(php|html)[\s?] [NC]
   RewriteRule ^(.*/)?index\.(php|html)$ /%1 [L,R=301,NE]
+
+  # Product ranges: /products/paper-plates is the products page, opened at that range.
+  # A trailing slash would break the page's relative links, so drop it.
+  RewriteRule ^products/([a-z-]+)/$ /products/$1 [L,R=301]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteRule ^products/([a-z-]+)$ products/index.php [L,QSA]
+
+  # Home sections: /how-to-order etc. is the home page, opened at that section
+  RewriteRule ^(who-we-supply|how-to-order|contact)/$ /$1 [L,R=301]
+  RewriteRule ^(who-we-supply|how-to-order|contact)$ index.php [L,QSA]
 
   # Old-style /products.html, /about.html -> folder URLs
   RewriteRule ^(products|about)\.html$ /$1/ [L,R=301]

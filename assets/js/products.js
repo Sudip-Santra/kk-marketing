@@ -122,12 +122,8 @@ document.getElementById('cart-send').addEventListener('click', () => {
 loadCart();
 render();
 
-// Range nav: underline the range in view
+// Range nav: underline the range in view (routing itself lives in main.js)
 const navLinks = [...document.querySelectorAll('.cat-nav a')];
-const spy = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (!e.isIntersecting) return;
-    navLinks.forEach(a => a.classList.toggle('active', a.hash === '#' + e.target.id));
-  });
-}, { rootMargin: '-45% 0px -50% 0px' });
-document.querySelectorAll('.range').forEach(s => spy.observe(s));
+addEventListener('routechange', (e) => {
+  navLinks.forEach(a => a.classList.toggle('active', !!e.detail && a.pathname === e.detail.path));
+});

@@ -56,3 +56,65 @@ document.getElementById('enquiry')?.addEventListener('submit', (e) => {
   const msg = `Hi K K Marketing, I'm ${name} (${phone}).\nBuying for: ${f.get('type')}\nNeed: ${(f.get('need') || '').trim() || '—'}`;
   window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
 });
+
+// Links to the page you're on (logo on home, "back to top") scroll up instead of reloading
+const pageBase = location.pathname.replace(/[^/]*$/, ''); // "/", "/products/", "/about/"
+const smoothOrInstant = () => matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth';
+const isPlainClick = (e, a) => a && !e.metaKey && !e.ctrlKey && !e.shiftKey && a.target !== '_blank' && a.origin === location.origin;
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href]');
+  if (!isPlainClick(e, a) || a.pathname !== pageBase || a.hash) return;
+  e.preventDefault();
+  if (location.pathname !== pageBase) history.pushState(null, '', pageBase);
+  scrollTo({ top: 0, behavior: smoothOrInstant() });
+});
+
+// Section URLs: elements with data-route="slug" get the address <page path>/slug instead of #slug.
+// The page opens at that section, links to it scroll instead of reloading, and the address
+// follows the section in view. data-route="" marks sections that belong to the page's own URL.
+const routeEls = [...document.querySelectorAll('[data-route]')];
+if (routeEls.some(el => el.dataset.route)) {
+  const sectionFor = (path) => path.startsWith(pageBase)
+    ? routeEls.find(el => el.dataset.route && el.dataset.route === path.slice(pageBase.length))
+    : null;
+  const announce = (el) => dispatchEvent(new CustomEvent('routechange', {
+    detail: el?.dataset.route ? { route: el.dataset.route, path: pageBase + el.dataset.route } : null,
+  }));
+  const go = (el, smooth) => {
+    const behavior = smooth ? smoothOrInstant() : 'instant';
+    if (el) el.scrollIntoView({ behavior, block: 'start' });
+    else scrollTo({ top: 0, behavior });
+    announce(el);
+  };
+
+  const initial = sectionFor(location.pathname);
+  if (initial) requestAnimationFrame(() => go(initial, false));
+
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!isPlainClick(e, a)) return;
+    const el = sectionFor(a.pathname);
+    if (!el) return;
+    e.preventDefault();
+    const url = pageBase + el.dataset.route;
+    if (location.pathname !== url) history.pushState(null, '', url);
+    go(el, true);
+  });
+  addEventListener('popstate', () => go(sectionFor(location.pathname), false));
+
+  // Keep the address and any section nav in step with what's on screen:
+  // the current section is the last one whose top has passed 30% of the viewport.
+  let current, ticking = false;
+  const sync = () => {
+    ticking = false;
+    const line = innerHeight * 0.3;
+    let el = null;
+    for (const r of routeEls) if (r.getBoundingClientRect().top <= line) el = r;
+    if (el === current) return;
+    current = el;
+    const url = pageBase + (el?.dataset.route || '');
+    if (location.pathname !== url) history.replaceState(null, '', url);
+    announce(el);
+  };
+  addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(sync); } }, { passive: true });
+}

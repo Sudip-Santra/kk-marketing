@@ -4,6 +4,9 @@
  * Expects: $page (nav key), $base ('' at root, '../' one level down), $title, $description.
  */
 require_once __DIR__ . '/config.php';
+
+// This page's own URL: "back to top" links here, and clicking it on this page just scrolls up
+$self = '/' . ($page === 'home' ? '' : $page . '/');
 ?>
 <!doctype html>
 <html lang="en">
