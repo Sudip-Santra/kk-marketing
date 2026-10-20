@@ -743,3 +743,84 @@ html.cart-lock { overflow: hidden; }
   .cart-head, .cart-foot { padding-left: 20px; padding-right: 20px; }
   .cart-list { padding: 0 20px; }
 }
+
+/* ==========================================================================
+   23. Component: About — page head (title, wide shop photo, facts)
+   ========================================================================== */
+.a-head { padding-top: 48px; padding-bottom: 96px; }
+.a-head-text { grid-column: 1 / span 8; }
+.a-head h1 { font-size: clamp(44px, 5.6vw, 88px); margin-top: 20px; }
+.a-head h1 em { color: var(--terra); }
+.a-head-lead { grid-column: 9 / span 4; align-self: end; padding-bottom: 8px; }
+.a-head-img { position: relative; margin-top: 56px; aspect-ratio: 21 / 9; overflow: hidden; background: var(--paper-2); }
+.a-head-img img { object-position: center 45%; animation: settle 1.6s var(--ease) forwards; transform: scale(1.06); }
+.a-head-img .tag { position: absolute; left: 0; bottom: 0; background: var(--paper); padding: 8px 12px; }
+.a-facts { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--ink); }
+.a-facts div { padding: 20px 16px 22px 0; }
+.a-facts div + div { padding-left: 20px; border-left: 1px solid var(--line); }
+.a-facts b { display: block; font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 2.6vw, 40px); line-height: 1; margin-bottom: 8px; }
+.a-facts span { font-size: 13px; color: var(--ink-2); }
+
+/* ==========================================================================
+   24. Component: About — proprietor signature (inside the terracotta story)
+   ========================================================================== */
+.a-sign { border-top: 1px solid rgba(244, 239, 230, .35); padding-top: 18px; display: flex; flex-direction: column; gap: 4px; }
+.a-sign .label { color: var(--butter); }
+.a-sign b { font-family: var(--serif); font-weight: 400; font-size: clamp(28px, 2.6vw, 40px); line-height: 1.05; margin-top: 6px; }
+.a-sign span:last-child { font-size: 14px; color: rgba(244, 239, 230, .72); }
+
+/* ==========================================================================
+   25. Component: About — range strip (links into the catalogue)
+   ========================================================================== */
+.a-ranges { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px var(--gutter); }
+.a-range { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; align-items: baseline; }
+.a-range figure { grid-column: 1 / -1; aspect-ratio: 3 / 4; overflow: hidden; background: var(--paper-2); margin-bottom: 14px; }
+.a-range img { transition: transform 1s var(--ease); }
+.a-range:hover img { transform: scale(1.05); }
+.a-range .label { color: var(--terra); }
+.a-range h3 { font-size: clamp(20px, 1.6vw, 24px); transition: color .2s; }
+.a-range .go { display: inline-flex; transition: transform .3s var(--ease), color .2s; }
+.a-range:hover h3, .a-range:hover .go { color: var(--terra); }
+.a-range:hover .go { transform: translateX(4px); }
+.a-more { margin-top: 56px; display: flex; justify-content: center; }
+
+/* ==========================================================================
+   26. Component: About — how we work (reuses .steps)
+   ========================================================================== */
+.a-work { background: var(--paper-2); }
+.a-work .sec-head h2 em { color: var(--terra); }
+
+/* ==========================================================================
+   27. Component: About — visit (details + map)
+   ========================================================================== */
+.a-visit-text { grid-column: 1 / span 5; display: flex; flex-direction: column; }
+.a-visit h2 { margin-top: 18px; }
+.a-visit h2 em { color: var(--terra); }
+.a-visit .lead { margin-top: 20px; }
+.a-visit .details { margin-top: 40px; }
+.a-visit-act { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 32px; }
+.a-map { grid-column: 7 / span 6; min-height: 480px; background: var(--paper-2); border: 1px solid var(--ink); }
+.a-map iframe { display: block; width: 100%; height: 100%; min-height: 480px; border: 0; filter: grayscale(.35) contrast(1.05); }
+
+/* ==========================================================================
+   28. Responsive (about)
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .a-ranges { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 860px) {
+  .a-head { padding-top: 28px; padding-bottom: 72px; }
+  .a-head-text, .a-head-lead { grid-column: 1 / -1; }
+  .a-head-lead { margin-top: 20px; }
+  .a-head-img { margin-top: 40px; aspect-ratio: 4 / 3; }
+  .a-facts { grid-template-columns: 1fr 1fr; }
+  .a-facts div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .a-facts div:nth-child(n+3) { border-top: 1px solid var(--line); }
+  .a-visit-text, .a-map { grid-column: 1 / -1; }
+  .a-map { margin-top: 48px; min-height: 360px; }
+  .a-map iframe { min-height: 360px; }
+}
+@media (max-width: 560px) {
+  .a-ranges { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
+  .a-range h3 { font-size: 19px; }
+}
