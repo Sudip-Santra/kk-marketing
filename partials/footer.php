@@ -39,6 +39,7 @@
           <li><a href="<?= $base ?>who-we-supply">Food Stalls &amp; Cafés</a></li>
           <li><a href="<?= $base ?>who-we-supply">Retail Shops &amp; Resellers</a></li>
           <li><a href="<?= $base ?>about/">About K K Marketing</a></li>
+          <li><a href="<?= $base ?>contact/">Contact &amp; Enquiries</a></li>
           <li><a href="<?= $base ?>how-to-order">How Ordering Works</a></li>
         </ul>
       </div>

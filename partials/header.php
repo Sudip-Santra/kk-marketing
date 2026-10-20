@@ -5,6 +5,7 @@ $nav = [
     'about'    => ['About', $base . 'about/'],
     'clients'  => ['Who we supply', $base . 'who-we-supply'],
     'process'  => ['How to order', $base . 'how-to-order'],
+    'contact'  => ['Contact', $base . 'contact/'],
 ];
 $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi K K Marketing, I'd like to know more about your products.");
 ?>
@@ -25,7 +26,7 @@ $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi K K Marketi
     </div>
     <div class="nav-cta">
       <a href="tel:<?= PHONE_TEL ?>" class="btn line">Call</a>
-      <a href="<?= $base ?>contact" class="btn">Get a rate <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a href="<?= $base ?>contact/" class="btn">Get a rate <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="m-menu">
         <svg class="i i-open" aria-hidden="true"><use href="#i-menu"/></svg>
         <svg class="i i-close" aria-hidden="true"><use href="#i-x"/></svg>
@@ -34,7 +35,7 @@ $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi K K Marketi
   </nav>
 </header>
 
-<!-- Mobile menu (below 860px); outside <header> so its blur doesn't trap the fixed panel -->
+<!-- Mobile menu (1080px and below); outside <header> so its blur doesn't trap the fixed panel -->
 <div class="m-menu" id="m-menu" hidden>
   <div class="wrap">
     <ol class="m-links">
@@ -44,7 +45,7 @@ $waHello = 'https://wa.me/' . WHATSAPP . '?text=' . rawurlencode("Hi K K Marketi
 <?php endforeach; ?>
     </ol>
     <div class="m-cta">
-      <a href="<?= $base ?>contact" class="btn">Get a rate <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+      <a href="<?= $base ?>contact/" class="btn">Get a rate <svg class="i arr" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
       <a href="<?= e($waHello) ?>" class="btn wa-btn" target="_blank" rel="noopener"><svg class="i wa-i" aria-hidden="true"><use href="#i-whatsapp"/></svg>WhatsApp</a>
       <a href="tel:<?= PHONE_TEL ?>" class="btn line">Call <?= PHONE_DISPLAY ?></a>
     </div>

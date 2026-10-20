@@ -70,7 +70,7 @@ const setMenu = (open) => {
 navToggle.addEventListener('click', () => setMenu(mMenu.hidden));
 mMenu.addEventListener('click', (e) => { if (e.target.closest('a')) setMenu(false); });
 addEventListener('keydown', (e) => { if (e.key === 'Escape' && !mMenu.hidden) { setMenu(false); navToggle.focus(); } });
-matchMedia('(min-width: 861px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
+matchMedia('(min-width: 1081px)').addEventListener('change', (e) => { if (e.matches) setMenu(false); });
 
 // Links to the page you're on (logo on home, "back to top") scroll up instead of reloading
 const pageBase = location.pathname.replace(/[^/]*$/, ''); // "/", "/products/", "/about/"

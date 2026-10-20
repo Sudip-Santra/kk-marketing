@@ -4,11 +4,10 @@ $base        = '';
 $title       = 'K K Marketing — Disposable Plates, Bowls & Cups';
 $description = 'K K Marketing, Margao, Goa — supplier and trader of disposable plates, paper plates, bowls and cups since 2015. Bulk supply for caterers, hotels, restaurants, events and shops.';
 
-// /who-we-supply, /how-to-order, /contact open this page at that section (see .htaccess / router.php)
+// /who-we-supply and /how-to-order open this page at that section (see .htaccess / router.php)
 $sections = [
     'who-we-supply' => 'Who we supply',
     'how-to-order'  => 'How to order',
-    'contact'       => 'Get a rate',
 ];
 $slug = basename(parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH));
 if (isset($sections[$slug])) {
@@ -147,7 +146,7 @@ include __DIR__ . '/partials/head.php';
   </section>
 
   <!-- Contact -->
-  <section id="contact" class="contact" data-route="contact">
+  <section id="enquiry-home" class="contact" data-route="">
     <div class="wrap grid">
       <div class="contact-head rv">
         <p class="label">(05) Enquiry</p>

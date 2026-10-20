@@ -117,7 +117,7 @@ nav { height: 60px; align-items: center; }
 .logo .accent, .foot-logo .accent { fill: var(--terra); }
 .links { grid-column: 4 / span 6; display: flex; justify-content: center; gap: 32px; font-size: 14px; }
 .links { font-size: 15px; font-weight: 500; }
-.links a { position: relative; color: var(--ink); padding: 4px 0; transition: color .3s var(--ease); }
+.links a { white-space: nowrap; position: relative; color: var(--ink); padding: 4px 0; transition: color .3s var(--ease); }
 /* Underline draws in from the left; on leave it exits to the right */
 .links a::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: -2px; height: 1.5px;
@@ -132,7 +132,7 @@ nav { height: 60px; align-items: center; }
 .links a[aria-current="page"]::after { transform: scaleX(1); }
 .nav-cta { grid-column: 10 / span 3; justify-self: end; display: flex; gap: 8px; }
 
-/* Mobile menu: toggle button + full-height panel under the header (shown below 860px) */
+/* Mobile menu: toggle button + full-height panel under the header (shown at 1080px and below) */
 .nav-toggle {
   display: none; width: 36px; height: 36px; place-items: center; flex: none;
   background: transparent; border: 1px solid var(--ink); color: var(--ink); cursor: pointer;
@@ -518,10 +518,15 @@ footer {
 /* ==========================================================================
    99. Responsive (home + shared)
    ========================================================================== */
-@media (min-width: 861px) {
+@media (min-width: 1081px) {
   .m-menu { display: none; }
 }
 @media (max-width: 1080px) {
+  /* Header switches to the menu button here: five links don't fit below this */
+  .links, .nav-cta .line { display: none; }
+  .nav-toggle { display: grid; }
+  .logo { grid-column: 1 / span 6; }
+  .nav-cta { grid-column: 7 / span 6; }
   .card.c-lg { grid-column: 1 / -1; grid-row: auto; }
   .card.c-lg .ph { aspect-ratio: 16 / 10; min-height: 0; }
   .card.c-sm { grid-column: span 6; }
@@ -531,8 +536,6 @@ footer {
 }
 @media (max-width: 860px) {
   :root { --pad: 20px; --gutter: 16px; }
-  .links, .nav-cta .line { display: none; }
-  .nav-toggle { display: grid; }
   .logo { grid-column: 1 / span 7; }
   .logo-svg { height: 34px; }
   .nav-cta { grid-column: 8 / span 5; }
@@ -845,7 +848,7 @@ html.cart-lock { overflow: hidden; }
 .a-visit .lead { margin-top: 20px; }
 .a-visit .details { margin-top: 40px; }
 .a-visit-act { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 32px; }
-.a-map { grid-column: 7 / span 6; min-height: 480px; background: var(--paper-2); border: 1px solid var(--ink); }
+.a-map { grid-column: 7 / span 6; min-height: 480px; background: var(--paper-2); }
 .a-map iframe { display: block; width: 100%; height: 100%; min-height: 480px; border: 0; filter: grayscale(.35) contrast(1.05); }
 
 /* ==========================================================================
@@ -869,4 +872,148 @@ html.cart-lock { overflow: hidden; }
 @media (max-width: 560px) {
   .a-ranges { grid-template-columns: 1fr 1fr; gap: 32px 16px; }
   .a-range h3 { font-size: 19px; }
+}
+
+/* ==========================================================================
+   29. Component: Contact — page head + ways to reach us
+   ========================================================================== */
+.c-head { padding-top: 48px; padding-bottom: 96px; align-items: end; }
+.c-head-text { grid-column: 1 / span 6; }
+.c-head h1 { font-size: clamp(44px, 5.6vw, 88px); margin-top: 20px; }
+.c-head h1 em { color: var(--terra); }
+.c-head .lead { margin-top: 24px; }
+.c-ways { grid-column: 8 / span 5; border-top: 1px solid var(--ink); }
+.c-way {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) auto; align-items: center; gap: 18px;
+  padding: 18px 0; border-bottom: 1px solid var(--line);
+}
+.c-ic {
+  width: 48px; height: 48px; display: grid; place-items: center;
+  background: var(--black); color: var(--paper); transition: background .2s;
+}
+.c-ic .i { width: 20px; height: 20px; }
+.c-way.is-wa .c-ic { background: #1da851; }
+.c-way-text .label { display: block; color: var(--ink-2); margin-bottom: 4px; }
+.c-way-text b { font-family: var(--serif); font-weight: 400; font-size: clamp(24px, 2.2vw, 32px); line-height: 1.05; transition: color .2s; }
+.c-way .arr { width: 18px; height: 18px; color: var(--ink-2); transition: transform .3s var(--ease), color .2s; }
+.c-way:hover .c-way-text b, .c-way:hover .arr { color: var(--terra); }
+.c-way:hover .arr { transform: translate(3px, -3px); }
+.c-way:hover .c-ic { background: var(--terra); }
+
+/* ==========================================================================
+   30. Component: Contact — enquiry form
+   ========================================================================== */
+.c-enquiry { background: var(--paper-2); }
+.c-enquiry-head { grid-column: 1 / span 4; align-self: start; position: sticky; top: 101px; }
+.c-enquiry-head h2 { margin: 18px 0 18px; }
+.c-enquiry-head h2 em { color: var(--terra); }
+.c-enquiry-head > p:not(.label) { font-size: 14.5px; max-width: 36ch; }
+.c-next { list-style: none; margin-top: 36px; border-top: 1px solid var(--ink); }
+.c-next li { display: grid; grid-template-columns: 40px 1fr; padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 14.5px; }
+.c-next span { font-family: var(--serif); font-size: 22px; line-height: 1; color: var(--terra); }
+form.c-form { grid-column: 6 / span 7; }
+.c-form .field-row { align-items: end; }
+.c-cart {
+  display: flex; align-items: center; gap: 10px; margin-top: 4px; padding: 12px 14px;
+  border: 1px solid var(--terra); background: rgba(194, 81, 46, .06); font-size: 14px; cursor: pointer;
+}
+.c-cart[hidden] { display: none; }
+.c-cart input { width: 16px; height: 16px; accent-color: var(--terra); }
+.c-cart b { font-weight: 500; color: var(--terra); }
+
+/* Date picker (replaces the native calendar) */
+.dp { position: relative; }
+.dp-field {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 8px 0; background: transparent; border: 0; border-bottom: 1px solid var(--ink);
+  font: inherit; font-size: 15px; color: var(--ink); text-align: left; cursor: pointer;
+  transition: border-color .2s;
+}
+.dp-field .is-empty { color: var(--ink-2); }
+.dp-field .i { width: 16px; height: 16px; color: var(--ink-2); transition: color .2s; }
+.dp-field:hover .i, .dp-field[aria-expanded="true"] .i { color: var(--terra); }
+.dp-field[aria-expanded="true"], .dp-field:focus-visible { border-color: var(--terra); outline: none; }
+.dp-pop {
+  position: absolute; top: calc(100% + 6px); right: 0; z-index: 20; width: 256px;
+  background: var(--paper); border: 1px solid var(--line); padding: 10px;
+  box-shadow: 0 14px 32px rgba(23, 21, 18, .12);
+}
+.dp-pop:not([hidden]) { animation: dp-in .25s var(--ease); }
+@keyframes dp-in { from { opacity: 0; transform: translateY(-6px); } }
+.dp-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+.dp-head b { font-family: var(--serif); font-weight: 400; font-size: 18px; }
+.dp-nav {
+  width: 26px; height: 26px; display: grid; place-items: center;
+  background: transparent; border: 1px solid var(--line); color: var(--ink); cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.dp-nav:hover:not(:disabled) { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.dp-nav:disabled { opacity: .3; cursor: default; }
+.dp-nav .i { width: 14px; height: 14px; }
+.dp-week, .dp-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+.dp .dp-week { display: grid; color: var(--ink-2); border-bottom: 1px solid var(--line); padding-bottom: 4px; margin-bottom: 2px; } /* beats .field .label */
+.dp-week span { text-align: center; font-size: 9px; color: var(--ink-2); }
+.dp-grid button {
+  aspect-ratio: 1; display: grid; place-items: center; position: relative;
+  background: transparent; border: 1px solid transparent; color: var(--ink);
+  font: 500 12px var(--sans); cursor: pointer; transition: background .15s, color .15s, border-color .15s;
+}
+.dp-grid button:hover:not(:disabled) { border-color: var(--terra); color: var(--terra); }
+.dp-grid button:focus-visible { outline: 2px solid var(--terra); outline-offset: -2px; }
+.dp-grid button:disabled { color: rgba(23, 21, 18, .25); cursor: default; }
+.dp-grid button.out { color: var(--ink-2); opacity: .5; }
+.dp-grid button.today { border-color: rgba(23, 21, 18, .35); }
+.dp-grid button[aria-selected="true"] { background: var(--black); color: var(--paper); border-color: var(--black); }
+.dp-foot { display: flex; justify-content: space-between; margin-top: 6px; padding-top: 6px; border-top: 1px solid var(--line); }
+.dp-link {
+  background: none; border: 0; padding: 4px 0; cursor: pointer;
+  font: 500 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ink);
+  transition: color .2s;
+}
+.dp-link:hover { color: var(--terra); }
+@media (max-width: 560px) {
+  .dp-pop { left: 0; right: 0; width: auto; }
+}
+
+/* ==========================================================================
+   31. Component: Contact — questions (accordion)
+   ========================================================================== */
+.c-faq-head { grid-column: 1 / span 4; }
+.c-faq-head h2 { margin-top: 18px; }
+.c-faq-head h2 em { color: var(--terra); }
+.c-faq-list { grid-column: 6 / span 7; border-top: 1px solid var(--ink); }
+.c-faq details { border-bottom: 1px solid var(--line); }
+.c-faq summary {
+  display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  padding: 20px 0; cursor: pointer; list-style: none;
+  font-family: var(--serif); font-size: clamp(21px, 1.8vw, 26px); line-height: 1.15; transition: color .2s;
+}
+.c-faq summary::-webkit-details-marker { display: none; }
+.c-faq summary .i { width: 18px; height: 18px; flex: none; transition: transform .35s var(--ease); }
+.c-faq summary:hover { color: var(--terra); }
+.c-faq details[open]:not(.closing) summary { color: var(--terra); }
+.c-faq details[open]:not(.closing) summary .i { transform: rotate(45deg); }
+/* Answer height is animated by contact.js */
+.faq-a { overflow: hidden; }
+.c-faq details p { padding: 0 48px 22px 0; font-size: 15px; color: var(--ink-2); max-width: 62ch; }
+
+/* ==========================================================================
+   32. Responsive (contact)
+   ========================================================================== */
+@media (max-width: 1080px) {
+  .c-head-text, .c-ways { grid-column: 1 / -1; }
+  .c-ways { margin-top: 48px; }
+  .c-enquiry-head { grid-column: 1 / -1; position: static; margin-bottom: 40px; }
+  .c-enquiry-head > p:not(.label) { max-width: 56ch; }
+  form.c-form { grid-column: 1 / -1; margin-top: 0; }
+  .c-faq-head, .c-faq-list { grid-column: 1 / -1; }
+  .c-faq-list { margin-top: 32px; }
+}
+@media (max-width: 860px) {
+  .c-head { padding-top: 28px; padding-bottom: 72px; }
+}
+@media (max-width: 560px) {
+  .c-way { grid-template-columns: 44px minmax(0, 1fr) auto; gap: 14px; }
+  .c-ic { width: 44px; height: 44px; }
+  .c-faq details p { padding-right: 0; }
 }
